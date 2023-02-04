@@ -4,19 +4,31 @@
         "name" : "small door",
         "description" : "There is a small door here.",
         "verbs" : [
-            "LOOK",
-            "OPEN",
-            "GO_THROUGH"
-        ]
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "room_0",
+            "room_1"
+        ],
+        "locked" : false,
+        "closed" : true
     },
     {
         "id" : "door_0-2",
         "name" : "large door",
         "description" : "There is a large door here.",
         "verbs" : [
-            "LOOK",
-            "OPEN",
-            "GO_THROUGH"
-        ]
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "room_0",
+            "room_2"
+        ],
+        "locked" : true,
+        "closed" : true
     }
 ]

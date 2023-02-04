@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextController textController;
     [SerializeField] private TMP_InputField inputField;
 
+    [SerializeField] private TextAsset doorsFile;
+
     private void Start()
     {
         inputParser = new InputParser();
         vocabulary = new Vocabulary(new List<string>() { "OPEN", "LOOK", "GO THROUGH" }, new Dictionary<string, List<string>>());
         SetupRooms();
+
+        GameContentLoader.LoadGameDoors(doorsFile);
     }
 
     private void SetupRooms()

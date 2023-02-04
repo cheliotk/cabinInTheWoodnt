@@ -1612,6 +1612,7 @@ MonoBehaviour:
   currentRoomId: room_0
   textController: {fileID: 1590021791}
   inputField: {fileID: 1603771960}
+  doorsFile: {fileID: 4900000, guid: 3cd2995a163ca3f4aa2749e2a7fc48e5, type: 3}
 --- !u!4 &1590021790
 Transform:
   m_ObjectHideFlags: 0
