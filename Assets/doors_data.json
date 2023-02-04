@@ -1,0 +1,22 @@
+[
+    {
+        "id" : "door_0-1",
+        "name" : "small door",
+        "description" : "There is a small door here.",
+        "verbs" : [
+            "LOOK",
+            "OPEN",
+            "GO_THROUGH"
+        ]
+    },
+    {
+        "id" : "door_0-2",
+        "name" : "large door",
+        "description" : "There is a large door here.",
+        "verbs" : [
+            "LOOK",
+            "OPEN",
+            "GO_THROUGH"
+        ]
+    }
+]
