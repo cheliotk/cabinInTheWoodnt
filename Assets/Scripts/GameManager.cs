@@ -75,13 +75,13 @@ public class GameManager : MonoBehaviour
         {
             if (verbResult.verb == Verb.LOOK)
             {
-                ShowAcknowledgementText($"You want to {verbResult.verbString}? SURE");
+                ShowAcknowledgementText($"You want to {verbResult.verbString} at something? SURE");
                 InteractWithRoom(currentRoom, verbResult);
             }
         }
         else if (targetResult.success)
         {
-            ShowAcknowledgementText($"You want to look at {targetResult.target.name}? SURE");
+            ShowAcknowledgementText($"You interested about {targetResult.target.name}? OK");
             ShowText($"{targetResult.target.description}");
         }
         else
