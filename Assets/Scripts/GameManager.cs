@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
 
     private void InteractWithDoor(Door targetDoor, VerbCheckResult verbResult, Room currentRoom)
     {
-        if (verbResult.verb == Verb.GO_THROUGH)
+        if (verbResult.verb == Verb.ENTER)
         {
             GoThroughDoorResult passDoorResult = targetDoor.GoThroughDoor(currentRoom, rooms);
             if (passDoorResult.success)

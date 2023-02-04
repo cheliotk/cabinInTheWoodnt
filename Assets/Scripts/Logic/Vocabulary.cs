@@ -22,7 +22,7 @@ public class Vocabulary
         {
             { "LOOK", Verb.LOOK },
             { "OPEN", Verb.OPEN },
-            { "GO THROUGH", Verb.GO_THROUGH },
+            { "ENTER", Verb.ENTER },
             { "USE", Verb.USE }
         };
     }
@@ -42,6 +42,6 @@ public enum Verb
     NONE = 0,
     LOOK = 1,
     OPEN = 2,
-    GO_THROUGH = 4,
+    ENTER = 4,
     USE = 8
 }
