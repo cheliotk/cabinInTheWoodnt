@@ -25,23 +25,25 @@ public class InputParser
 
     public static VerbCheckResult HasVerb(string input)
     {
-        foreach (string verb in Vocabulary.Verbs)
+        input = input.ToUpper();
+        foreach (string verb in Vocabulary.verbs)
         {
             //foreach (string verbSynonym in Vocabulary.VerbSynonyms[verb])
             //{
                 if(input.Contains(verb))
                 {
-                    return new VerbCheckResult(true, verb);
+                    return new VerbCheckResult(true, verb, Vocabulary.VerbStrToEnum(verb));
                 }
             //}
         }
 
-        return new VerbCheckResult(false, null);
+        return new VerbCheckResult(false, null, Verb.NONE);
     }
 
     public static TargetCheckResult HasTarget(string input, List<Door> doors, List<Item> items)
     {
-        foreach(Door door in doors)
+        input = input.ToUpper();
+        foreach (Door door in doors)
         {
             if(input.Contains(door.name))
             {

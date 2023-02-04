@@ -37,11 +37,14 @@ public class DataStructures
     public class VerbCheckResult
     {
         public bool success;
-        public string verb;
+        public string verbString;
+        public Verb verb;
 
-        public VerbCheckResult(bool success, string verb)
+
+        public VerbCheckResult(bool success, string verbString, Verb verb)
         {
             this.success = success;
+            this.verbString = verbString;
             this.verb = verb;
         }
     }

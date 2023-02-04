@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Vocabulary;
 
 [Serializable]
 public class ObjectBase
@@ -8,5 +9,5 @@ public class ObjectBase
     public string id;
     public string name;
     public string description;
-    public List<string> validVerbs;
+    public Verb validVerbs;
 }

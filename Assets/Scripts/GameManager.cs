@@ -35,16 +35,30 @@ public class GameManager : MonoBehaviour
 
         if(verbResult.success && targetResult.success)
         {
-            bool canCombine = targetResult.target.validVerbs.Contains(verbResult.verb);
+            bool canCombine = targetResult.target.validVerbs.HasFlag(verbResult.verb);
             string successText = canCombine ? "SURE" : "NAH";
-            Debug.Log($"You want to {verbResult.verb} {targetResult.target.name}? {successText}");
+            Debug.Log($"You want to {verbResult.verbString} {targetResult.target.name}? {successText}");
+
+            if (canCombine)
+            {
+                if(targetResult.target is Door targetDoor)
+                {
+                    if (verbResult.verb == Verb.GO_THROUGH)
+                    {
+                        Room nextRoom = targetDoor.GoThroughDoor(currentRoom, rooms);
+                        currentRoomId = nextRoom.id;
+                    }
+                }
+            }
         }
         else if (verbResult.success)
         {
-            if(verbResult.verb == "LOOK")
+            if(verbResult.verbString == "LOOK")
             {
-                Debug.Log($"You want to {verbResult.verb}");
+                Debug.Log($"You want to {verbResult.verbString}? SURE");
             }
+
+            Debug.Log($"{currentRoom.description}");
         }
         else
         {

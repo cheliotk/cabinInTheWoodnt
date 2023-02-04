@@ -753,16 +753,14 @@ MonoBehaviour:
   - id: room_0
     name: ROOM0
     description: This is Room 0
-    validVerbs:
-    - LOOK
+    validVerbs: 1
     doorIds:
     - door_0-1
     items: []
   - id: room_1
     name: ROOM1
     description: This is Room 1
-    validVerbs:
-    - LOOK
+    validVerbs: 1
     doorIds:
     - door_0-1
     items: []
@@ -770,10 +768,7 @@ MonoBehaviour:
   - id: door_0-1
     name: DOOR
     description: This is a door
-    validVerbs:
-    - LOOK
-    - OPEN
-    - GO THROUGH
+    validVerbs: 7
     roomIds:
     - room_0
     - room_1
