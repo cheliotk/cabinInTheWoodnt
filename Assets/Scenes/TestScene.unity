@@ -772,6 +772,7 @@ MonoBehaviour:
     roomIds:
     - room_0
     - room_1
+    closed: 1
     locked: 0
   currentRoomId: room_0
 --- !u!4 &1590021790

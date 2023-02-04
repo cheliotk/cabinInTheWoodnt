@@ -64,4 +64,37 @@ public class DataStructures
             this.target = target;
         }
     }
+
+    public class GoThroughDoorResult
+    {
+        public bool success;
+        public Room oldRoom;
+        public Room newRoom;
+        public bool locked;
+        public bool closed;
+
+        public GoThroughDoorResult(bool success, Room oldRoom, Room newRoom, bool locked, bool closed)
+        {
+            this.success = success;
+            this.oldRoom = oldRoom;
+            this.newRoom = newRoom;
+            this.locked = locked;
+            this.closed = closed;
+        }
+    }
+
+    public class OpenDoorResult
+    {
+        public bool success;
+        public bool locked;
+        public bool alreadyOpen;
+
+        public OpenDoorResult(bool success, bool locked, bool alreadyOpen)
+        {
+            this.success = success;
+            this.locked = locked;
+            this.alreadyOpen = alreadyOpen;
+        }
+    }
+
 }

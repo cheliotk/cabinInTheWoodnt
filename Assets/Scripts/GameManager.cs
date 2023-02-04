@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         if(verbResult.success && targetResult.success)
         {
             bool canCombine = targetResult.target.validVerbs.HasFlag(verbResult.verb);
-            string successText = canCombine ? "SURE" : "NAH";
+            string successText = canCombine ? "LETS TRY" : "NAH";
             Debug.Log($"You want to {verbResult.verbString} {targetResult.target.name}? {successText}");
 
             if (canCombine)
@@ -45,8 +45,46 @@ public class GameManager : MonoBehaviour
                 {
                     if (verbResult.verb == Verb.GO_THROUGH)
                     {
-                        Room nextRoom = targetDoor.GoThroughDoor(currentRoom, rooms);
-                        currentRoomId = nextRoom.id;
+                        GoThroughDoorResult passDoorResult = targetDoor.GoThroughDoor(currentRoom, rooms);
+                        if (passDoorResult.success)
+                        {
+                            currentRoomId = passDoorResult.newRoom.id;
+                            Debug.Log($"You passed through the door");
+                        }
+                        else
+                        {
+                            if (passDoorResult.locked)
+                            {
+                                Debug.Log($"The door is locked");
+                            }
+                            else if (passDoorResult.closed)
+                            {
+                                Debug.Log($"The door is closed");
+                            }
+                        }
+                    }
+                    else if (verbResult.verb == Verb.LOOK)
+                    {
+                        Debug.Log($"{targetDoor.description}");
+                    }
+                    else if (verbResult.verb == Verb.OPEN)
+                    {
+                        var result = targetDoor.OpenDoor();
+                        if (result.success)
+                        {
+                            Debug.Log($"The door is now open.");
+                        }
+                        else
+                        {
+                            if(result.locked)
+                            {
+                                Debug.Log($"The door is locked.");
+                            }
+                            else if(result.alreadyOpen)
+                            {
+                                Debug.Log($"The door is already open.");
+                            }
+                        }
                     }
                 }
             }
