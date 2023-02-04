@@ -750,27 +750,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - id: 0
-    name: Room0
-    description: This is Room0
-    connections:
-    - id: 0
-      name: DOOR
-      description: This is a Door
-      roomIds: 0000000001000000
-      locked: 0
+  - id: room_0
+    name: ROOM0
+    description: This is Room 0
+    validVerbs:
+    - LOOK
+    doorIds:
+    - door_0-1
     items: []
-  - id: 1
-    name: Room1
-    description: This is Room1
-    connections:
-    - id: 0
-      name: DOOR
-      description: This is a Door
-      roomIds: 0000000001000000
-      locked: 0
+  - id: room_1
+    name: ROOM1
+    description: This is Room 1
+    validVerbs:
+    - LOOK
+    doorIds:
+    - door_0-1
     items: []
-  currentRoomId: 0
+  doors:
+  - id: door_0-1
+    name: DOOR
+    description: This is a door
+    validVerbs:
+    - LOOK
+    - OPEN
+    - GO THROUGH
+    roomIds:
+    - room_0
+    - room_1
+    locked: 0
+  currentRoomId: room_0
 --- !u!4 &1590021790
 Transform:
   m_ObjectHideFlags: 0

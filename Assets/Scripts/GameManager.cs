@@ -6,7 +6,8 @@ using static DataStructures;
 public class GameManager : MonoBehaviour
 {
     public List<Room> rooms;
-    public int currentRoomId;
+    public List<Door> doors;
+    public string currentRoomId;
 
     private InputParser inputParser;
     private Vocabulary vocabulary;
@@ -14,41 +15,29 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         inputParser = new InputParser();
-        vocabulary = new Vocabulary(new List<string>() { "OPEN", "LOOK" }, new Dictionary<string, List<string>>());
+        vocabulary = new Vocabulary(new List<string>() { "OPEN", "LOOK", "GO THROUGH" }, new Dictionary<string, List<string>>());
     }
 
     public void GoToRoom(Room room)
     {
-
+        currentRoomId = room.id;
     }
 
     public void ParseInput(string input)
     {
         VerbCheckResult verbResult = InputParser.HasVerb(input);
         
-        Room currentRoom = rooms[currentRoomId];
-        List<Door> doorsInRoom = currentRoom.connections;
+        Room currentRoom = rooms.Find(x => x.id == currentRoomId);
+        List<Door> doorsInRoom = doors.FindAll(x => currentRoom.doorIds.Contains(x.id));
         List<Item> itemsInRoom = currentRoom.items;
 
         TargetCheckResult targetResult = InputParser.HasTarget(input, doorsInRoom, itemsInRoom);
 
         if(verbResult.success && targetResult.success)
         {
-            string target = "";
-            switch (targetResult.targetType)
-            {
-                case TargetCheckType.NONE:
-                    break;
-                case TargetCheckType.ITEM:
-                    target = targetResult.targetItem.name;
-                    break;
-                case TargetCheckType.DOOR:
-                    target = targetResult.targetDoor.name;
-                    break;
-                default:
-                    break;
-            }
-            Debug.Log($"You want to {verbResult.verb} {target}");
+            bool canCombine = targetResult.target.validVerbs.Contains(verbResult.verb);
+            string successText = canCombine ? "SURE" : "NAH";
+            Debug.Log($"You want to {verbResult.verb} {targetResult.target.name}? {successText}");
         }
         else if (verbResult.success)
         {

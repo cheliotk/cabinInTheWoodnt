@@ -50,15 +50,15 @@ public class DataStructures
     {
         public bool success;
         public TargetCheckType targetType;
+        public ObjectBase target;
         public Item targetItem;
         public Door targetDoor;
 
-        public TargetCheckResult(bool success, TargetCheckType targetType, Item targetItem, Door targetDoor)
+        public TargetCheckResult(bool success, TargetCheckType targetType, ObjectBase target)
         {
             this.success = success;
             this.targetType = targetType;
-            this.targetItem = targetItem;
-            this.targetDoor = targetDoor;
+            this.target = target;
         }
     }
 }

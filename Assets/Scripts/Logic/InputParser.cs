@@ -45,7 +45,7 @@ public class InputParser
         {
             if(input.Contains(door.name))
             {
-                return new TargetCheckResult(true, TargetCheckType.DOOR, null, door);
+                return new TargetCheckResult(true, TargetCheckType.DOOR, door);
             }
         }
 
@@ -53,10 +53,10 @@ public class InputParser
         {
             if(input.Contains(item.name))
             {
-                return new TargetCheckResult(true, TargetCheckType.ITEM, item, null);
+                return new TargetCheckResult(true, TargetCheckType.ITEM, item);
             }
         }
 
-        return new TargetCheckResult(false, TargetCheckType.NONE, null, null);
+        return new TargetCheckResult(false, TargetCheckType.NONE, null);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Room : ObjectBase
 {
-    public List<Door> connections;
+    public List<string> doorIds;
 
     public List<Item> items;
 }
