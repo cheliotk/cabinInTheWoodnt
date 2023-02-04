@@ -30,12 +30,24 @@ public class Room : ObjectBase
         }
     }
 
+    public void AddItem(Item item)
+    {
+        itemIds.Add(item.id);
+        items.Add(item);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        itemIds.Remove(item.id);
+        items.Remove(item);
+    }
+
     public string GetDoorsString()
     {
         string doorsString = string.Empty;
         foreach (Door door in doors)
         {
-            doorsString += "\n" + door.description;
+            doorsString += "\n" + door.shortDescription;
         }
 
         return doorsString;
@@ -46,7 +58,7 @@ public class Room : ObjectBase
         string itemsString = string.Empty;
         foreach (Item item in items)
         {
-            itemsString += "\n" + item.description;
+            itemsString += "\n" + item.shortDescription;
         }
         return itemsString;
     }

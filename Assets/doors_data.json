@@ -1,8 +1,9 @@
 [
     {
         "id" : "door_0-1",
-        "name" : "small door",
-        "description" : "There is a small door here.",
+        "name" : "hole",
+        "shortDescription" : "There is a small hole in the far wall.",
+        "extendedDescription" : "The hole seems to lead to another room, but it's too dark to see clearly. I can barely fit through.",
         "verbs" : [
             1,
             2,
@@ -13,12 +14,13 @@
             "room_1"
         ],
         "locked" : false,
-        "closed" : true
+        "closed" : false
     },
     {
         "id" : "door_0-2",
-        "name" : "large door",
-        "description" : "There is a large door here.",
+        "name" : "DOOR",
+        "shortDescription" : "There is a large door behind me.",
+        "extendedDescription" : "There is a large wooden door. It seems heavy.",
         "verbs" : [
             1,
             2,

@@ -1,0 +1,48 @@
+[
+    {
+        "id" : "room_0",
+        "name" : "MAIN ROOM",
+        "shortDescription" : "It's a big room, feels very cosy.",
+        "extendedDescription" : "There's a fireplace, with two rocking chairs beside a small table.",
+        "verbs" : [
+            1
+        ],
+        "doorIds" : [
+            "door_0-1",
+            "door_0-2"
+        ],
+        "itemIds" : [
+            "item_0"
+        ]
+    },
+    {
+        "id" : "room_1",
+        "name" : "BEDROOM",
+        "shortDescription" : "It's a small bedroom.",
+        "extendedDescription" : "There's a bed in the middle, and a large wardrobe.",
+        "verbs" : [
+            1
+        ],
+        "doorIds" : [
+            "door_0-1"
+        ],
+        "itemIds" : [
+
+        ]
+    },
+    {
+        "id" : "room_2",
+        "name" : "KITCHEN",
+        "shortDescription" : "It's a small kitchen.",
+        "extendedDescription" : "There's a sink, and a counter.",
+        "verbs" : [
+            1
+        ],
+        "doorIds" : [
+            "door_0-2"
+        ],
+        "itemIds" : [
+
+        ]
+    }
+]

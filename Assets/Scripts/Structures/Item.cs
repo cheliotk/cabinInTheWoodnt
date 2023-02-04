@@ -6,5 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Item : ObjectBase
 {
-
+    public List<string> itemIdsToUnlock;
+    public List<string> doorIdsToUnlock;
+    public string useItemText;
 }

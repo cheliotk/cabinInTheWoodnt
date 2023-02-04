@@ -5,7 +5,7 @@ public class ObjectBase
 {
     public string id;
     public string name;
-    public string description;
-    public string longDescription;
+    public string shortDescription;
+    public string extendedDescription;
     public Verb validVerbs;
 }

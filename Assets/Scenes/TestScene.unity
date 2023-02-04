@@ -1032,7 +1032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 27, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1147656277
@@ -1574,45 +1574,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9f7d3d6686c154db7885f17d6826f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms:
-  - id: room_0
-    name: ROOM0
-    description: This is Room 0.
-    longDescription: 
-    validVerbs: 1
-    doorIds:
-    - door_0-1
-    itemIds:
-    - item_1
-  - id: room_1
-    name: ROOM1
-    description: This is Room 1.
-    longDescription: 
-    validVerbs: 1
-    doorIds:
-    - door_0-1
-    itemIds: []
-  doors:
-  - id: door_0-1
-    name: DOOR
-    description: There is a door here.
-    longDescription: 
-    validVerbs: 7
-    roomIds:
-    - room_0
-    - room_1
-    closed: 1
-    locked: 0
-  items:
-  - id: item_1
-    name: THINGY
-    description: There is a thingy here.
-    longDescription: 
-    validVerbs: 1
+  doors: []
+  rooms: []
+  items: []
   currentRoomId: room_0
   textController: {fileID: 1590021791}
   inputField: {fileID: 1603771960}
   doorsFile: {fileID: 4900000, guid: 3cd2995a163ca3f4aa2749e2a7fc48e5, type: 3}
+  roomsFile: {fileID: 4900000, guid: 074684b540229c547a5ac1b9c9e479b0, type: 3}
+  itemsFile: {fileID: 4900000, guid: 99c36108976c64841b50073b5428cee2, type: 3}
 --- !u!4 &1590021790
 Transform:
   m_ObjectHideFlags: 0

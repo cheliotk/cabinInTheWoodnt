@@ -6,10 +6,11 @@ using static DataStructures;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Room> rooms;
     public List<Door> doors;
+    public List<Room> rooms;
     public List<Item> items;
     public string currentRoomId;
+    public Room currentRoom;
 
     private InputParser inputParser;
     private Vocabulary vocabulary;
@@ -17,14 +18,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_InputField inputField;
 
     [SerializeField] private TextAsset doorsFile;
+    [SerializeField] private TextAsset roomsFile;
+    [SerializeField] private TextAsset itemsFile;
 
     private void Start()
     {
+        doors = GameContentLoader.LoadGameDoors(doorsFile);
+        rooms = GameContentLoader.LoadGameRooms(roomsFile);
+        items = GameContentLoader.LoadGameItems(itemsFile);
+
+
         inputParser = new InputParser();
-        vocabulary = new Vocabulary(new List<string>() { "OPEN", "LOOK", "GO THROUGH" }, new Dictionary<string, List<string>>());
+        vocabulary = new Vocabulary(new List<string>() { "LOOK", "OPEN", "GO THROUGH", "USE" }, new Dictionary<string, List<string>>());
         SetupRooms();
 
-        GameContentLoader.LoadGameDoors(doorsFile);
+        currentRoom = rooms.Find(x => x.id == currentRoomId);
     }
 
     private void SetupRooms()
@@ -36,16 +44,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GoToRoom(Room room)
+    public void GoToRoom(string roomId)
     {
-        currentRoomId = room.id;
+        currentRoomId = roomId;
+        currentRoom = rooms.Find(x => x.id == currentRoomId);
     }
 
     public void ParseInput(string input)
     {
         VerbCheckResult verbResult = InputParser.HasVerb(input);
 
-        Room currentRoom = rooms.Find(x => x.id == currentRoomId);
+        //Room currentRoom = rooms.Find(x => x.id == currentRoomId);
         List<Door> doorsInRoom = doors.FindAll(x => currentRoom.doors.Contains(x));
         List<Item> itemsInRoom = currentRoom.items;
 
@@ -69,7 +78,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (targetResult.target is Item targetItem)
                 {
-
+                    InteractWithItem(targetItem, verbResult);
                 }
                 else if (targetResult.target is Room room)
                 {
@@ -81,18 +90,22 @@ public class GameManager : MonoBehaviour
         {
             if (verbResult.verb == Verb.LOOK)
             {
-                ShowAcknowledgementText($"You want to {verbResult.verbString} at something? SURE");
-                InteractWithRoom(currentRoom, verbResult);
+                ShowAcknowledgementText($"You want to {verbResult.verbString} around? SURE");
+                LookAroundRoom(currentRoom);
+            }
+            else
+            {
+
             }
         }
         else if (targetResult.success)
         {
             ShowAcknowledgementText($"You interested about {targetResult.target.name}? OK");
-            ShowText($"{targetResult.target.description}");
+            ShowText($"{targetResult.target.shortDescription}");
         }
         else
         {
-            ShowAcknowledgementText($"I don't understand what you want me to do");
+            CommandNotUnderstood();
         }
     }
 
@@ -100,25 +113,48 @@ public class GameManager : MonoBehaviour
     {
         if (verbResult.verb == Verb.LOOK)
         {
-            string roomDescription = currentRoom.description;
-
-            string doorsDesc = currentRoom.GetDoorsString();
-            if (doorsDesc != string.Empty)
-                roomDescription += doorsDesc;
-            
-            string itemsDesc = currentRoom.GetItemsString();
-            if (itemsDesc != string.Empty)
-                roomDescription += itemsDesc;
-
+            string roomDescription = currentRoom.extendedDescription;
             ShowText($"{roomDescription}");
         }
     }
 
+    private void LookAroundRoom(Room currentRoom)
+    {
+        string roomDescription = currentRoom.shortDescription;
+
+        string doorsDesc = currentRoom.GetDoorsString();
+        if (doorsDesc != string.Empty)
+            roomDescription += doorsDesc;
+
+        string itemsDesc = currentRoom.GetItemsString();
+        if (itemsDesc != string.Empty)
+            roomDescription += itemsDesc;
+
+        ShowText($"{roomDescription}");
+    }
+
     private void InteractWithItem(Item item, VerbCheckResult verbResult)
     {
-        if(verbResult.verb == Verb.LOOK)
+        if (verbResult.verb == Verb.LOOK)
         {
-            ShowText(item.description);
+            ShowText(item.extendedDescription);
+        }
+        else if (verbResult.verb == Verb.USE)
+        {
+            List<string> itemIdsToIntroduce = item.itemIdsToUnlock;
+            foreach (string itemId in itemIdsToIntroduce)
+            {
+                Item itemToIntroduce = items.Find(x => x.id == itemId);
+                currentRoom.AddItem(itemToIntroduce);
+            }
+
+            List<string> doorIdsToUnlock = item.doorIdsToUnlock;
+            foreach (string doorId in doorIdsToUnlock)
+            {
+                doors.Find(x => x.id == doorId).locked = false;
+            }
+            currentRoom.RemoveItem(item);
+            ShowText(item.useItemText);
         }
     }
 
@@ -129,7 +165,7 @@ public class GameManager : MonoBehaviour
             GoThroughDoorResult passDoorResult = targetDoor.GoThroughDoor(currentRoom, rooms);
             if (passDoorResult.success)
             {
-                currentRoomId = passDoorResult.newRoom.id;
+                GoToRoom(passDoorResult.newRoom.id);
                 ShowText($"You passed through the door");
             }
             else
@@ -146,7 +182,7 @@ public class GameManager : MonoBehaviour
         }
         else if (verbResult.verb == Verb.LOOK)
         {
-            ShowText($"{targetDoor.description}");
+            ShowText($"{targetDoor.extendedDescription}");
         }
         else if (verbResult.verb == Verb.OPEN)
         {
@@ -167,6 +203,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void CommandNotUnderstood()
+    {
+        ShowAcknowledgementText($"I don't understand what you want me to do");
     }
 
     private void ShowText(string text)
