@@ -19,6 +19,15 @@ public class GameManager : MonoBehaviour
     {
         inputParser = new InputParser();
         vocabulary = new Vocabulary(new List<string>() { "OPEN", "LOOK", "GO THROUGH" }, new Dictionary<string, List<string>>());
+        SetupRooms();
+    }
+
+    private void SetupRooms()
+    {
+        foreach (Room room in rooms)
+        {
+            room.SetupDoors(doors);
+        }
     }
 
     public void GoToRoom(Room room)
@@ -31,7 +40,7 @@ public class GameManager : MonoBehaviour
         VerbCheckResult verbResult = InputParser.HasVerb(input);
 
         Room currentRoom = rooms.Find(x => x.id == currentRoomId);
-        List<Door> doorsInRoom = doors.FindAll(x => currentRoom.doorIds.Contains(x.id));
+        List<Door> doorsInRoom = doors.FindAll(x => currentRoom.doors.Contains(x));
         List<Item> itemsInRoom = currentRoom.items;
 
         TargetCheckResult targetResult = InputParser.HasTarget(input, doorsInRoom, itemsInRoom);
@@ -67,9 +76,8 @@ public class GameManager : MonoBehaviour
             if (verbResult.verb == Verb.LOOK)
             {
                 ShowAcknowledgementText($"You want to {verbResult.verbString}? SURE");
+                InteractWithRoom(currentRoom, verbResult);
             }
-
-            ShowText($"{currentRoom.description}");
         }
         else if (targetResult.success)
         {
@@ -86,7 +94,16 @@ public class GameManager : MonoBehaviour
     {
         if (verbResult.verb == Verb.LOOK)
         {
-            ShowText($"{currentRoom.description}");
+            string roomDescription = currentRoom.description;
+            string itemsDesc = currentRoom.GetItemsString();
+            if (itemsDesc != string.Empty)
+                roomDescription += itemsDesc;
+
+            string doorsDesc = currentRoom.GetDoorsString();
+            if (doorsDesc != string.Empty)
+                roomDescription += doorsDesc;
+
+            ShowText($"{roomDescription}");
         }
     }
 
