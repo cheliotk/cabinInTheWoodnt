@@ -1032,7 +1032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 27, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1147656277
@@ -1581,7 +1581,11 @@ MonoBehaviour:
     validVerbs: 1
     doorIds:
     - door_0-1
-    items: []
+    items:
+    - id: item_0
+      name: THINGAMAJIG
+      description: There is a thing-a-majig here.
+      validVerbs: 1
   - id: room_1
     name: ROOM1
     description: This is Room 1.

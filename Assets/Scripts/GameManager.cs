@@ -95,13 +95,14 @@ public class GameManager : MonoBehaviour
         if (verbResult.verb == Verb.LOOK)
         {
             string roomDescription = currentRoom.description;
-            string itemsDesc = currentRoom.GetItemsString();
-            if (itemsDesc != string.Empty)
-                roomDescription += itemsDesc;
 
             string doorsDesc = currentRoom.GetDoorsString();
             if (doorsDesc != string.Empty)
                 roomDescription += doorsDesc;
+            
+            string itemsDesc = currentRoom.GetItemsString();
+            if (itemsDesc != string.Empty)
+                roomDescription += itemsDesc;
 
             ShowText($"{roomDescription}");
         }
