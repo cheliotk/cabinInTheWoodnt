@@ -7,8 +7,10 @@ public class TextController : MonoBehaviour
 {
     [SerializeField] private GameObject textEntryPrefab;
     [SerializeField] private RectTransform textContainer;
+    [SerializeField] private TextMeshProUGUI acknowledgementText;
     [SerializeField] private int maxTextsListCount = 50;
     private List<GameObject> textsList = new List<GameObject>();
+    
     public void AddText(string text)
     {
         var entry = Instantiate(textEntryPrefab, textContainer);
@@ -21,5 +23,12 @@ public class TextController : MonoBehaviour
             Destroy(lastObject);
             textsList.RemoveAt(0);
         }
+    }
+
+    public void AddAcknowledgementText(string text)
+    {
+        AddText(text);
+        //acknowledgementText.text = text + 
+        //    "\nWhat you want me to do next?";
     }
 }

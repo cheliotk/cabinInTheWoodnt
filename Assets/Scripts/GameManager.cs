@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static DataStructures;
 
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     private InputParser inputParser;
     private Vocabulary vocabulary;
     [SerializeField] private TextController textController;
+    [SerializeField] private TMP_InputField inputField;
 
     private void Start()
     {
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             bool canCombine = targetResult.target.validVerbs.HasFlag(verbResult.verb);
             string successText = canCombine ? "LETS TRY" : "NAH";
-            ShowText($"You want to {verbResult.verbString} {targetResult.target.name}? {successText}");
+            ShowAcknowledgementText($"You want to {verbResult.verbString} {targetResult.target.name}? {successText}");
 
             if (canCombine)
             {
@@ -64,19 +66,19 @@ public class GameManager : MonoBehaviour
         {
             if (verbResult.verb == Verb.LOOK)
             {
-                ShowText($"You want to {verbResult.verbString}? SURE");
+                ShowAcknowledgementText($"You want to {verbResult.verbString}? SURE");
             }
 
             ShowText($"{currentRoom.description}");
         }
         else if (targetResult.success)
         {
-            ShowText($"You want to look at {targetResult.target.name}? SURE");
+            ShowAcknowledgementText($"You want to look at {targetResult.target.name}? SURE");
             ShowText($"{targetResult.target.description}");
         }
         else
         {
-            ShowText($"I don't understand what you want to do");
+            ShowAcknowledgementText($"I don't understand what you want me to do");
         }
     }
 
@@ -138,5 +140,12 @@ public class GameManager : MonoBehaviour
     private void ShowText(string text)
     {
         textController.AddText(text);
+        inputField.text = "";
+    }
+
+    private void ShowAcknowledgementText(string text)
+    {
+        textController.AddAcknowledgementText(text);
+        inputField.text = "";
     }
 }
