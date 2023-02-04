@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         List<Item> itemsInRoom = currentRoom.items;
 
         TargetCheckResult targetResult = InputParser.HasTarget(input, doorsInRoom, itemsInRoom);
+        if(targetResult.success && targetResult.target == null)
+        {
+            targetResult.target = currentRoom;
+        }
 
         if(verbResult.success && targetResult.success)
         {
@@ -43,64 +47,90 @@ public class GameManager : MonoBehaviour
             {
                 if(targetResult.target is Door targetDoor)
                 {
-                    if (verbResult.verb == Verb.GO_THROUGH)
-                    {
-                        GoThroughDoorResult passDoorResult = targetDoor.GoThroughDoor(currentRoom, rooms);
-                        if (passDoorResult.success)
-                        {
-                            currentRoomId = passDoorResult.newRoom.id;
-                            Debug.Log($"You passed through the door");
-                        }
-                        else
-                        {
-                            if (passDoorResult.locked)
-                            {
-                                Debug.Log($"The door is locked");
-                            }
-                            else if (passDoorResult.closed)
-                            {
-                                Debug.Log($"The door is closed");
-                            }
-                        }
-                    }
-                    else if (verbResult.verb == Verb.LOOK)
-                    {
-                        Debug.Log($"{targetDoor.description}");
-                    }
-                    else if (verbResult.verb == Verb.OPEN)
-                    {
-                        var result = targetDoor.OpenDoor();
-                        if (result.success)
-                        {
-                            Debug.Log($"The door is now open.");
-                        }
-                        else
-                        {
-                            if(result.locked)
-                            {
-                                Debug.Log($"The door is locked.");
-                            }
-                            else if(result.alreadyOpen)
-                            {
-                                Debug.Log($"The door is already open.");
-                            }
-                        }
-                    }
+                    InteractWithDoor(targetDoor, verbResult, currentRoom);
+                }
+                else if(targetResult.target is Item targetItem)
+                {
+
+                }
+                else if(targetResult.target is Room room)
+                {
+                    InteractWithRoom(room, verbResult);
                 }
             }
         }
         else if (verbResult.success)
         {
-            if(verbResult.verbString == "LOOK")
+            if(verbResult.verb == Verb.LOOK)
             {
                 Debug.Log($"You want to {verbResult.verbString}? SURE");
             }
 
             Debug.Log($"{currentRoom.description}");
         }
+        else if (targetResult.success)
+        {
+            Debug.Log($"You want to look at {targetResult.target.name}? SURE");
+            Debug.Log($"{targetResult.target.description}");
+        }
         else
         {
             Debug.Log($"I don't understand what you want to do");
+        }
+    }
+
+    private void InteractWithRoom(Room currentRoom, VerbCheckResult verbResult)
+    {
+        if (verbResult.verb == Verb.LOOK)
+        {
+            Debug.Log($"{currentRoom.description}");
+        }
+    }
+
+    private void InteractWithDoor(Door targetDoor, VerbCheckResult verbResult, Room currentRoom)
+    {
+        if (verbResult.verb == Verb.GO_THROUGH)
+        {
+            GoThroughDoorResult passDoorResult = targetDoor.GoThroughDoor(currentRoom, rooms);
+            if (passDoorResult.success)
+            {
+                currentRoomId = passDoorResult.newRoom.id;
+                Debug.Log($"You passed through the door");
+            }
+            else
+            {
+                if (passDoorResult.locked)
+                {
+                    Debug.Log($"The door is locked");
+                }
+                else if (passDoorResult.closed)
+                {
+                    Debug.Log($"The door is closed");
+                }
+            }
+        }
+        else if (verbResult.verb == Verb.LOOK)
+        {
+            Debug.Log($"{targetDoor.description}");
+        }
+        else if (verbResult.verb == Verb.OPEN)
+        {
+            var result = targetDoor.OpenDoor();
+            if (result.success)
+            {
+                Debug.Log($"The door is now open.");
+            }
+            else
+            {
+                if (result.locked)
+                {
+                    Debug.Log($"The door is locked.");
+                }
+                else if (result.alreadyOpen)
+                {
+                    Debug.Log($"The door is already open.");
+                }
+            }
         }
     }
 }

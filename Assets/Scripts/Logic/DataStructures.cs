@@ -15,7 +15,8 @@ public class DataStructures
     {
         NONE = 0,
         ITEM = 1,
-        DOOR = 2
+        DOOR = 2,
+        ROOM = 3
     }
 
     public class ParserResultArgs : EventArgs

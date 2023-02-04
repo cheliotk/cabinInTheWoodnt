@@ -43,6 +43,7 @@ public class InputParser
     public static TargetCheckResult HasTarget(string input, List<Door> doors, List<Item> items)
     {
         input = input.ToUpper();
+
         foreach (Door door in doors)
         {
             if(input.Contains(door.name))
@@ -57,6 +58,11 @@ public class InputParser
             {
                 return new TargetCheckResult(true, TargetCheckType.ITEM, item);
             }
+        }
+
+        if (input.Contains("ROOM"))
+        {
+            return new TargetCheckResult(true, TargetCheckType.ROOM, null);
         }
 
         return new TargetCheckResult(false, TargetCheckType.NONE, null);
