@@ -9,7 +9,8 @@ public class Room : ObjectBase
     public List<string> doorIds;
     public List<Door> doors { get; private set; }
 
-    public List<Item> items;
+    public List<string> itemIds;
+    public List<Item> items { get; private set; }
 
     public void SetupDoors(List<Door> allDoors)
     {
@@ -17,6 +18,15 @@ public class Room : ObjectBase
         foreach (string id in doorIds)
         {
             doors.Add(allDoors.Find(x=> x.id == id));
+        }
+    }
+
+    public void SetupItems(List<Item> allItems)
+    {
+        items = new List<Item>();
+        foreach (string id in itemIds)
+        {
+            items.Add(allItems.Find(x => x.id == id));
         }
     }
 

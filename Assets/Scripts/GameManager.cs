@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public List<Room> rooms;
     public List<Door> doors;
+    public List<Item> items;
     public string currentRoomId;
 
     private InputParser inputParser;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         foreach (Room room in rooms)
         {
             room.SetupDoors(doors);
+            room.SetupItems(items);
         }
     }
 
@@ -105,6 +107,14 @@ public class GameManager : MonoBehaviour
                 roomDescription += itemsDesc;
 
             ShowText($"{roomDescription}");
+        }
+    }
+
+    private void InteractWithItem(Item item, VerbCheckResult verbResult)
+    {
+        if(verbResult.verb == Verb.LOOK)
+        {
+            ShowText(item.description);
         }
     }
 
