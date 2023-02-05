@@ -1,0 +1,82 @@
+[
+    {
+        "id": "trees_yard_0",
+        "name": "TREES",
+        "shortDescription": "There are two TREES in front of the cabin.",
+        "extendedDescription": "These trees are beautiful. Their branches lean towards one another, making them look as if they are trying to hug.",
+        "useItemText": "",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "apothecary_0",
+        "name": "TABLE",
+        "shortDescription": "On the right side of the room stands an apothecary TABLE.",
+        "extendedDescription": "This apothecary TABLE was bought by my father, from a pawn shop in the nearby town. The shopkeeper insisted that it was an item of great value, but my father didn't seem to buy it. Well, he bought the TABLE, but the old man's exaggerations regarding the its origins seemed a bit exaggerated.",
+        "useItemText": "",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "drawer_0",
+        "name": "DRAWER",
+        "shortDescription": "The DRAWER has wooden ornaments.",
+        "extendedDescription": "A beautiful engraving decorates the DRAWER's facade, depicting a wolf and a myrtle tree.",
+        "useItemText": "There's a key here, chief!",
+        "verbs": [
+            1,2,8
+        ],
+        "itemIdsToUnlock": [
+            "key_0"
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "key_0",
+        "name": "KEY",
+        "shortDescription": "The KEY is... shiny?",
+        "extendedDescription": "The KEY seems fairly simple compared to the table, it looks like it belongs someplace else...",
+        "useItemText": "Shiny KEY IS OURS!",
+        "verbs": [
+            1,
+            8
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+            "lodge_to_bedroom_0"
+        ]
+    },
+    {
+        "id": "fireplace_0",
+        "name": "FIREPLACE",
+        "shortDescription": "Right across the room is an old FIREPLACE made of stone.",
+        "extendedDescription": "Grendar once tried to light up the fireplace to warm up but the fire didn't like it.",
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    }
+]

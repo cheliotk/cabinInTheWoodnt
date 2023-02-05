@@ -17,6 +17,12 @@ public class GameContentLoader
     private const string COLOR_START_TREE_OUTPUT = "<color=#DA0063>";
     private const string COLOR_STOP_TREE_OUTPUT = "</color>";
 
+    private const string COLOR_START_SOUND_INPUT = "<start_sound_color>";
+    private const string COLOR_STOP_SOUND_INPUT = "<stop_sound_color>";
+
+    private const string COLOR_START_SOUND_OUTPUT = "<color=#FFFFFF>";
+    private const string COLOR_STOP_SOUND_OUTPUT = "</color>";
+
 
     public static List<Door> LoadGameDoors(TextAsset doorsFile)
     {
@@ -64,7 +70,16 @@ public class GameContentLoader
         door.name = doorNode["name"].Value.ToUpper();
         door.shortDescription = doorNode["shortDescription"];
         door.extendedDescription = doorNode["extendedDescription"];
-        
+
+        door.extendedDescription = door.extendedDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
+        door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
+
+        door.extendedDescription = door.extendedDescription.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
+        door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
+
+        door.extendedDescription = door.extendedDescription.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
+        door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
+
         List<string> roomIds = new List<string>();
         foreach (var roomId in doorNode["roomIds"] as JSONArray)
         {
@@ -101,6 +116,9 @@ public class GameContentLoader
 
         room.selfDescription = room.selfDescription.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
         room.selfDescription = room.selfDescription.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
+
+        room.selfDescription = room.selfDescription.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
+        room.selfDescription = room.selfDescription.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
 
         room.imageSpriteIndex = roomNode["imageSpriteIndex"] as JSONNumber;
 

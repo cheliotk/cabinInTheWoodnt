@@ -2018,7 +2018,7 @@ MonoBehaviour:
   items: []
   currentRoomId: 
   startRoomId: yard_0
-  endRoomId: main_room_0
+  endRoomId: bedroom_0
   currentRoom:
     id: 
     name: 
@@ -2033,12 +2033,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 94f8af1866f44ce4a90c19ecfb67d2de, type: 3}
   - {fileID: 21300000, guid: 1569617a66f5edd47b34038244de3713, type: 3}
   - {fileID: 21300000, guid: 0ca3a04fcf4bdd144ba7608af17ffa11, type: 3}
+  - {fileID: 21300000, guid: 2fcb20a1cf0e01844a65adcac05164f9, type: 3}
   textController: {fileID: 1590021791}
   inputField: {fileID: 1603771960}
   gameMusic: {fileID: 1299281322}
-  doorsFile: {fileID: 4900000, guid: c2c16fce62ba7284e9467c4cec6f3bb6, type: 3}
-  roomsFile: {fileID: 4900000, guid: d5a924e486f2b5e4d8c8827d46f3f07b, type: 3}
-  itemsFile: {fileID: 4900000, guid: e0e642139a5927c459eb0b5c704bf408, type: 3}
+  doorsFile: {fileID: 4900000, guid: 07c68f0eb3dba2c4cab43907e9ebc364, type: 3}
+  roomsFile: {fileID: 4900000, guid: 60c2a6937522aee41ab07df76ba368e9, type: 3}
+  itemsFile: {fileID: 4900000, guid: 2f6fe9d1f0804124080da3a517476405, type: 3}
   contentRectTransform: {fileID: 1147656276}
   pauseScreen: {fileID: 164039971}
   menuScreen: {fileID: 1986658982}
@@ -3055,7 +3056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985016297504496461, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4985016298336021682, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchorMax.x

@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
             isInGame = false;
             inputField.onEndEdit.RemoveAllListeners();
             inputField.onEndEdit.AddListener(ParseMenuInput);
+            StopMusic();
         }
     }
 

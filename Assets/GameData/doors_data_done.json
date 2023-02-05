@@ -1,0 +1,106 @@
+[
+    {
+        "id" : "yard_to_cabin_0",
+        "name" : "CABIN",
+        "shortDescription" : "The CABIN sits at the back of the yard.",
+        "extendedDescription" : "The CABIN is further ahead.",
+        "verbs" : [
+            1,
+            4,
+            16
+        ],
+        "roomIds" : [
+            "yard_0",
+            "cabin_front_0"
+        ],
+        "locked" : false,
+        "closed" : false
+    },
+    {
+        "id" : "cabin_to_yard_0",
+        "name" : "YARD",
+        "shortDescription" : "The large YARD is behind me.",
+        "extendedDescription" : "The large YARD sits in front of the cabin, with the two large trees arching before the cabin entrance.",
+        "verbs" : [
+            1,
+            4,
+            16
+        ],
+        "roomIds" : [
+            "cabin_front_0",
+            "yard_0"
+        ],
+        "locked" : false,
+        "closed" : false
+    },
+    {
+        "id" : "cabin_to_lodge_0",
+        "name" : "DOOR",
+        "shortDescription" : "The creaky cabin DOOR is in front of me.",
+        "extendedDescription" : "The cabin DOOR is the last thing my parents installed. I am not sure if it was to facilitate going in and out throughout the construction process, or if it symbolized closure of a long and tiresome process.",
+        "verbs" : [
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "cabin_front_0",
+            "lodge_0"
+        ],
+        "locked" : false,
+        "closed" : false
+    },
+    {
+        "id" : "lodge_to_cabin_0",
+        "name" : "CABIN DOOR",
+        "shortDescription" : "The CABIN DOOR shut behind you, chief. Now it won't budge",
+        "extendedDescription" : "Help me go back outside.\n<start_sound_color>CLANK CLANK<stop_sound_color>\n<start_grendar_color>The door won't budge chief.<stop_grendar_color>\nPfff, we shall find another way then.",
+        "verbs" : [
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "lodge_0",
+            "cabin_front_0"
+        ],
+        "locked" : true,
+        "closed" : true
+    },
+    {
+        "id" : "lodge_to_sanctum_0",
+        "name" : "ORANGE DOOR",
+        "shortDescription" : "The ORANGE DOOR is orange, chief!",
+        "extendedDescription" : "<Doesn't open from this side>",
+        "useitemText":"It's locked chief.",
+        "verbs" : [
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "lodge_0",
+            "lodge_0"
+        ],
+        "locked" : true,
+        "closed" : true
+    },
+    {
+        "id" : "lodge_to_bedroom_0",
+        "name" : "BLUE DOOR",
+        "shortDescription" : "The BLUE DOOR is in the far back of the room.",
+        "extendedDescription" : "It's locked chief.",
+        "useitemText":"OOOH! This house isn't only kitchen! Not that Grendar didn't like that! He he!\nWanna go see what's in the room chief?",
+        "verbs" : [
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "lodge_0",
+            "bedroom_0"
+        ],
+        "locked" : true,
+        "closed" : true
+    }
+]
