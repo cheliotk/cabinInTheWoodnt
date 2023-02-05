@@ -9,38 +9,64 @@ using static DataStructures;
 public class GameManager : MonoBehaviour
 {
     public bool isPaused { get; private set; } = false;
+    public bool isInEndScreen { get; private set; } = false;
+    public bool musicOn { get; private set; } = true;
+    private bool isInGame = false;
+
     public List<Door> doors;
     public List<Room> rooms;
     public List<Item> items;
     public string currentRoomId;
+    public string startRoomId;
+    public string endRoomId;
     public Room currentRoom;
 
     private InputParser inputParser;
     private Vocabulary vocabulary;
+    [SerializeField] private List<Sprite> roomImageSprites;
     [SerializeField] private TextController textController;
     [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private AudioSource gameMusic;
 
     [SerializeField] private TextAsset doorsFile;
     [SerializeField] private TextAsset roomsFile;
     [SerializeField] private TextAsset itemsFile;
     [SerializeField] private RectTransform contentRectTransform;
-    [SerializeField] private RectTransform pauseScreen;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject menuScreen;
+    [SerializeField] private GameObject endScreen;
+    [SerializeField] private GameObject inGameImage;
 
     private void Start()
     {
-        InitializeGame();
+        isPaused = false;
+        SetPauseScreen(isPaused);
+
+        isInEndScreen = false;
+        SetEndScreen(isInEndScreen);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(isInGame && Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
-            TogglePauseScreen(isPaused);
+            SetPauseScreen(isPaused);
         }
     }
 
-    private void TogglePauseScreen(bool gameIsPaused)
+    private void SetEndScreen(bool endScreenOn)
+    {
+        endScreen.SetActive(endScreenOn);
+        if(endScreenOn)
+        {
+            isInGame = false;
+            inputField.onEndEdit.RemoveAllListeners();
+            inputField.onEndEdit.AddListener(ParseMenuInput);
+        }
+    }
+
+    private void SetPauseScreen(bool gameIsPaused)
     {
         if(gameIsPaused)
             ShowPauseScreen();
@@ -51,13 +77,23 @@ public class GameManager : MonoBehaviour
     private void ShowPauseScreen()
     {
         DeactivateInputField();
-        pauseScreen.gameObject.SetActive(true);
+        pauseScreen.SetActive(true);
     }
 
     private void HidePauseScreen()
     {
-        pauseScreen.gameObject.SetActive(false);
+        pauseScreen.SetActive(false);
         ActivateInputField();
+    }
+
+    private void ToggleMusic()
+    {
+        musicOn = !musicOn;
+
+        if (musicOn)
+            StartMusic();
+        else
+            StopMusic();
     }
 
     private void InitializeGame()
@@ -66,15 +102,31 @@ public class GameManager : MonoBehaviour
         rooms = GameContentLoader.LoadGameRooms(roomsFile);
         items = GameContentLoader.LoadGameItems(itemsFile);
 
-
         inputParser = new InputParser();
         vocabulary = new Vocabulary(new List<string>() { "LOOK", "OPEN", "ENTER", "USE", "GO TO" }, new Dictionary<string, List<string>>());
         SetupRooms();
 
-        GoToRoom(currentRoomId);
+        inputField.onEndEdit.RemoveAllListeners();
+        inputField.onEndEdit.AddListener(ParseInput);
+
+        textController.RemoveAllEntries();
+
+        menuScreen.SetActive(false);
+
+        GoToRoom(startRoomId);
 
         isPaused = false;
-        TogglePauseScreen(isPaused);
+        SetPauseScreen(isPaused);
+
+        isInEndScreen = false;
+        SetEndScreen(isInEndScreen);
+
+        inGameImage.SetActive(true);
+
+        musicOn = true;
+        StartMusic();
+
+        isInGame = true;
     }
 
     private void SetupRooms()
@@ -91,19 +143,63 @@ public class GameManager : MonoBehaviour
         currentRoomId = roomId;
         currentRoom = rooms.Find(x => x.id == currentRoomId);
         ShowSelfText(currentRoom.selfDescription);
+
+        inGameImage.GetComponent<Image>().sprite = roomImageSprites[currentRoom.imageSpriteIndex];
+
+        if(currentRoomId == endRoomId)
+        {
+            TriggerEndSequence();
+        }
+    }
+
+    private void TriggerEndSequence()
+    {
+        StartCoroutine(EndSequence());
+    }
+
+    private IEnumerator EndSequence()
+    {
+        DeactivateInputField();
+        yield return new WaitForSeconds(2);
+        SetEndScreen(true);
+        ActivateInputField();
+    }
+
+    public void ParseMenuInput(string input)
+    {
+        if (input.ToUpper() == "QUITGAME")
+        {
+            Application.Quit();
+            return;
+        }
+
+        if (input.ToUpper() == "START")
+        {
+            InitializeGame();
+        }
+
+        ResetInputField();
     }
 
     public void ParseInput(string input)
     {
         if(string.IsNullOrEmpty(input))
         {
-            FinalizeTextShow();
+            ResetInputField();
             return;
         }
 
         if(input.ToUpper() == "QUITGAME")
         {
             Application.Quit();
+            return;
+        }
+
+        if(input.ToUpper() == "MUSIC")
+        {
+            ToggleMusic();
+            ResetInputField();
+            return;
         }
 
         VerbCheckResult verbResult = InputParser.HasVerb(input);
@@ -193,7 +289,7 @@ public class GameManager : MonoBehaviour
         {
             ShowText(item.extendedDescription);
         }
-        else if (verbResult.verb == Verb.USE)
+        else if (verbResult.verb == Verb.USE || verbResult.verb == Verb.OPEN)
         {
             List<string> itemIdsToIntroduce = item.itemIdsToUnlock;
             foreach (string itemId in itemIdsToIntroduce)
@@ -274,22 +370,22 @@ public class GameManager : MonoBehaviour
     private void ShowText(string text)
     {
         textController.AddText(text);
-        FinalizeTextShow();
+        ResetInputField();
     }
 
     private void ShowAcknowledgementText(string text)
     {
         textController.AddAcknowledgementText(text);
-        FinalizeTextShow();
+        ResetInputField();
     }
 
     public void ShowSelfText(string text)
     {
         textController.AddSelfText(text);
-        FinalizeTextShow();
+        ResetInputField();
     }
 
-    private void FinalizeTextShow()
+    private void ResetInputField()
     {
         inputField.text = "";
         ActivateInputField();
@@ -312,4 +408,7 @@ public class GameManager : MonoBehaviour
         inputField.DeactivateInputField();
         inputField.enabled = false;
     }
+
+    private void StartMusic() => gameMusic.Play();
+    private void StopMusic() => gameMusic.Stop();
 }

@@ -20,7 +20,7 @@
         "id" : "cabin_to_yard_0",
         "name" : "YARD",
         "shortDescription" : "The large YARD is behind me.",
-        "extendedDescription" : "The large YARD sits in front of the cabin, with the two large trees arching before the cabin entrance.",
+        "extendedDescription" : "The large YARD sits in front of the cabin.",
         "verbs" : [
             1,
             4,
@@ -32,5 +32,22 @@
         ],
         "locked" : false,
         "closed" : false
+    },
+    {
+        "id" : "cabin_to_main_room_0",
+        "name" : "DOOR",
+        "shortDescription" : "The cabin DOOR is in front of me.",
+        "extendedDescription" : "The DOOR should have been locked, but it's not.",
+        "verbs" : [
+            1,
+            2,
+            4
+        ],
+        "roomIds" : [
+            "cabin_front_0",
+            "main_room_0"
+        ],
+        "locked" : false,
+        "closed" : true
     }
 ]

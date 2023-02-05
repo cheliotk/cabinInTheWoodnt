@@ -38,9 +38,7 @@ public class TextController : MonoBehaviour
 
         if (textsList.Count > maxTextsListCount)
         {
-            GameObject lastObject = textsList[0];
-            Destroy(lastObject);
-            textsList.RemoveAt(0);
+            RemoveFirstEntry();
         }
     }
 
@@ -55,6 +53,21 @@ public class TextController : MonoBehaviour
             GameObject lastObject = textsList[0];
             Destroy(lastObject);
             textsList.RemoveAt(0);
+        }
+    }
+
+    private void RemoveFirstEntry()
+    {
+        GameObject lastObject = textsList[0];
+        Destroy(lastObject);
+        textsList.RemoveAt(0);
+    }
+
+    public void RemoveAllEntries()
+    {
+        while (textsList.Count > 0)
+        {
+            RemoveFirstEntry();
         }
     }
 }

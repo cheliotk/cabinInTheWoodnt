@@ -12,6 +12,7 @@ public class Room : ObjectBase
 
     public List<string> itemIds;
     public List<Item> items { get; private set; }
+    public int imageSpriteIndex;
 
     public void SetupDoors(List<Door> allDoors)
     {

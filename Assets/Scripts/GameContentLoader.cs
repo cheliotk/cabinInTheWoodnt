@@ -11,6 +11,12 @@ public class GameContentLoader
     private const string COLOR_START_GRENDAR_OUTPUT = "<color=#0CA789>";
     private const string COLOR_STOP_GRENDAR_OUTPUT = "</color>";
 
+    private const string COLOR_START_TREE_INPUT = "<start_tree_color>";
+    private const string COLOR_STOP_TREE_INPUT = "<stop_tree_color>";
+
+    private const string COLOR_START_TREE_OUTPUT = "<color=#DA0063>";
+    private const string COLOR_STOP_TREE_OUTPUT = "</color>";
+
 
     public static List<Door> LoadGameDoors(TextAsset doorsFile)
     {
@@ -92,6 +98,11 @@ public class GameContentLoader
 
         room.selfDescription = room.selfDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
         room.selfDescription = room.selfDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
+
+        room.selfDescription = room.selfDescription.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
+        room.selfDescription = room.selfDescription.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
+
+        room.imageSpriteIndex = roomNode["imageSpriteIndex"] as JSONNumber;
 
         int flagsCounter = 0;
         foreach (var verbIndex in roomNode["verbs"] as JSONArray)
