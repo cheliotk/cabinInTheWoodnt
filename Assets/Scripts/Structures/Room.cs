@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Room : ObjectBase
 {
+    public string selfDescription;
     public List<string> doorIds;
     public List<Door> doors { get; private set; }
 

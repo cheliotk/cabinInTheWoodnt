@@ -1,0 +1,51 @@
+[
+    {
+        "id": "room_0",
+        "name": "MAIN ROOM",
+        "shortDescription": "It's a big ROOM, feels very cosy.",
+        "extendedDescription": "The ROOM looks very lush and expensive, but nothing is particularly interesting.",
+        "selfDescription": "I entered the MAIN ROOM.",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "door_0-1",
+            "door_0-2"
+        ],
+        "itemIds": [
+            "item_0"
+        ]
+    },
+    {
+        "id": "room_1",
+        "name": "BEDROOM",
+        "shortDescription": "It's a small BEDROOM.",
+        "extendedDescription": "This is a standard BEDROOM, nothing more to see here'.",
+        "selfDescription": "I entered the BEDROOM.",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "door_0-1"
+        ],
+        "itemIds": [
+
+        ]
+    },
+    {
+        "id": "room_2",
+        "name": "KITCHEN",
+        "shortDescription": "It's a small KITCHEN.",
+        "extendedDescription": "The KITCHEN has everything you would expect an empty KITCHEN to have.",
+        "selfDescription": "I entered the KITCHEN.",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "door_0-2"
+        ],
+        "itemIds": [
+
+        ]
+    }
+]

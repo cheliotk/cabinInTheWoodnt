@@ -14,7 +14,7 @@ public class TextController : MonoBehaviour
     public void AddText(string text)
     {
         var entry = Instantiate(textEntryPrefab, textContainer);
-        entry.GetComponent<TextMeshProUGUI>().text = text;
+        entry.GetComponent<TextEntry>().SetText(text, TextType.STANDARD);
         textsList.Add(entry);
 
         if(textsList.Count > maxTextsListCount)
@@ -27,8 +27,34 @@ public class TextController : MonoBehaviour
 
     public void AddAcknowledgementText(string text)
     {
-        AddText(text);
+        //AddText(text);
+
         //acknowledgementText.text = text + 
         //    "\nWhat you want me to do next?";
+
+        var entry = Instantiate(textEntryPrefab, textContainer);
+        entry.GetComponent<TextEntry>().SetText(text, TextType.ACKNOWLEDGEMENT);
+        textsList.Add(entry);
+
+        if (textsList.Count > maxTextsListCount)
+        {
+            GameObject lastObject = textsList[0];
+            Destroy(lastObject);
+            textsList.RemoveAt(0);
+        }
+    }
+
+    public void AddSelfText(string text)
+    {
+        var entry = Instantiate(textEntryPrefab, textContainer);
+        entry.GetComponent<TextEntry>().SetText(text, TextType.SELF);
+        textsList.Add(entry);
+
+        if (textsList.Count > maxTextsListCount)
+        {
+            GameObject lastObject = textsList[0];
+            Destroy(lastObject);
+            textsList.RemoveAt(0);
+        }
     }
 }

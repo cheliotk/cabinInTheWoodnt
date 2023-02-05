@@ -81,6 +81,7 @@ public class GameContentLoader
         room.name = roomNode["name"].Value.ToUpper();
         room.shortDescription = roomNode["shortDescription"];
         room.extendedDescription = roomNode["extendedDescription"];
+        room.selfDescription = roomNode["selfDescription"];
 
         int flagsCounter = 0;
         foreach (var verbIndex in roomNode["verbs"] as JSONArray)

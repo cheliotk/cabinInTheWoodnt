@@ -1,0 +1,34 @@
+[
+    {
+        "id" : "yard_to_cabin_0",
+        "name" : "CABIN",
+        "shortDescription" : "The CABIN sits at the back of the yard.",
+        "extendedDescription" : "The CABIN is further ahead.",
+        "verbs" : [
+            1,
+            16
+        ],
+        "roomIds" : [
+            "yard_0",
+            "cabin_front_0"
+        ],
+        "locked" : false,
+        "closed" : false
+    },
+    {
+        "id" : "cabin_to_yard_0",
+        "name" : "YARD",
+        "shortDescription" : "The large YARD is in front of the cabin.",
+        "extendedDescription" : "The large YARD sits in front of the cabin, with the two large trees arching before the cabin entrance.",
+        "verbs" : [
+            1,
+            16
+        ],
+        "roomIds" : [
+            "cabin_front_0",
+            "yard_0"
+        ],
+        "locked" : false,
+        "closed" : false
+    }
+]

@@ -1,0 +1,36 @@
+[
+    {
+        "id": "item_0",
+        "name": "THINGY",
+        "shortDescription": "There's a THINGY hanging from the wall.",
+        "extendedDescription": "It's a small THINGY. It kind of looks like a macguffin.",
+        "useItemText": "You used the macguffin THINGY. It opened an alcove in the wall, revealing a key.",
+        "verbs": [
+            1,
+            8
+        ],
+        "itemIdsToUnlock": [
+            "key_0"
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "key_0",
+        "name": "KEY",
+        "shortDescription": "There's a KEY in the alcove on the wall.",
+        "extendedDescription": "It's a small iron KEY. It looks sturdy.",
+        "useItemText": "You used the KEY on the large locked door. The door unlocked.",
+        "verbs": [
+            1,
+            8
+        ],
+        "itemIdsToUnlock": [
+
+        ],
+        "doorIdsToUnlock": [
+            "door_0-2"
+        ]
+    }
+]

@@ -1,0 +1,33 @@
+[
+    {
+        "id": "yard_0",
+        "name": "yard",
+        "shortDescription": "I'm in the front yard.",
+        "extendedDescription": "I take a stroll around the yard. The old swing hanging from the apple tree, the blueberry bushes, it's all the same. But enough fooling around, it's getting late and cold, I need to get this over with.",
+        "selfDescription": "After all these years, I am standing again in this yard, the smell of snowy mud and elder pines permeating my nose. My childhood cabin, so different and yet so identical, brings back memories. But not necessarily good ones.\n\nI didn't want to come back here, however the two trees arching just before the cabin's porch are making me feel like home. I cannot recall them being there when I was a child, but they might have been mere sprouts back then.\n\nMaybe I should quit stalling the inevitable and go in.",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "yard_to_cabin_0"
+        ],
+        "itemIds": [
+            "trees_yard_0"
+        ]
+    },
+    {
+        "id": "cabin_front_0",
+        "name": "CABIN",
+        "shortDescription": "I'm in front of the CABIN.",
+        "extendedDescription": "",
+        "selfDescription": "I grab the doorknob with one hand, while the other is looking for the key in my jeans' front pocket. But the door creaks open, just by jiggling the knob. Someone must have broken in, it's been abandoned for more than a decade after all. Or maybe.... maybe there is someone here now?",
+        "verbs": [
+        ],
+        "doorIds": [
+            "cabin_to_yard_0"
+        ],
+        "itemIds": [
+            
+        ]
+    }
+]

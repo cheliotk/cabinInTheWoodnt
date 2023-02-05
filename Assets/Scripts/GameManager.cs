@@ -20,8 +20,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextAsset doorsFile;
     [SerializeField] private TextAsset roomsFile;
     [SerializeField] private TextAsset itemsFile;
+    [SerializeField] private RectTransform contentRectTransform;
 
     private void Start()
+    {
+        InitializeGame();
+    }
+
+    private void InitializeGame()
     {
         doors = GameContentLoader.LoadGameDoors(doorsFile);
         rooms = GameContentLoader.LoadGameRooms(roomsFile);
@@ -29,10 +35,10 @@ public class GameManager : MonoBehaviour
 
 
         inputParser = new InputParser();
-        vocabulary = new Vocabulary(new List<string>() { "LOOK", "OPEN", "GO THROUGH", "USE" }, new Dictionary<string, List<string>>());
+        vocabulary = new Vocabulary(new List<string>() { "LOOK", "OPEN", "ENTER", "USE", "GO TO" }, new Dictionary<string, List<string>>());
         SetupRooms();
 
-        currentRoom = rooms.Find(x => x.id == currentRoomId);
+        GoToRoom(currentRoomId);
     }
 
     private void SetupRooms()
@@ -48,17 +54,24 @@ public class GameManager : MonoBehaviour
     {
         currentRoomId = roomId;
         currentRoom = rooms.Find(x => x.id == currentRoomId);
+        ShowSelfText(currentRoom.selfDescription);
     }
 
     public void ParseInput(string input)
     {
+        if(string.IsNullOrEmpty(input))
+        {
+            FinalizeTextShow();
+            return;
+        }
+
         VerbCheckResult verbResult = InputParser.HasVerb(input);
 
         //Room currentRoom = rooms.Find(x => x.id == currentRoomId);
         List<Door> doorsInRoom = doors.FindAll(x => currentRoom.doors.Contains(x));
         List<Item> itemsInRoom = currentRoom.items;
 
-        TargetCheckResult targetResult = InputParser.HasTarget(input, doorsInRoom, itemsInRoom);
+        TargetCheckResult targetResult = InputParser.HasTarget(input, currentRoom);
         if (targetResult.success && targetResult.target == null)
         {
             targetResult.target = currentRoom;
@@ -67,8 +80,8 @@ public class GameManager : MonoBehaviour
         if (verbResult.success && targetResult.success)
         {
             bool canCombine = targetResult.target.validVerbs.HasFlag(verbResult.verb);
-            string successText = canCombine ? "LETS TRY" : "NAH";
-            ShowAcknowledgementText($"You want to {verbResult.verbString} {targetResult.target.name}? {successText}");
+            string successText = canCombine ? "OK" : "NO";
+            ShowAcknowledgementText($"{verbResult.verbString} {targetResult.target.name}? {successText}");
 
             if (canCombine)
             {
@@ -90,17 +103,17 @@ public class GameManager : MonoBehaviour
         {
             if (verbResult.verb == Verb.LOOK)
             {
-                ShowAcknowledgementText($"You want to {verbResult.verbString} around? SURE");
+                ShowAcknowledgementText($"{verbResult.verbString} around? OK");
                 LookAroundRoom(currentRoom);
             }
             else
             {
-
+                CommandNotUnderstood();
             }
         }
         else if (targetResult.success)
         {
-            ShowAcknowledgementText($"You interested about {targetResult.target.name}? OK");
+            ShowAcknowledgementText($"Interested in {targetResult.target.name}? OK");
             ShowText($"{targetResult.target.shortDescription}");
         }
         else
@@ -180,6 +193,14 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        else if(verbResult.verb == Verb.GO_TO)
+        {
+            GoThroughDoorResult passDoorResult = targetDoor.GoThroughDoor(currentRoom, rooms);
+            if (passDoorResult.success)
+            {
+                GoToRoom(passDoorResult.newRoom.id);
+            }
+        }
         else if (verbResult.verb == Verb.LOOK)
         {
             ShowText($"{targetDoor.extendedDescription}");
@@ -213,12 +234,28 @@ public class GameManager : MonoBehaviour
     private void ShowText(string text)
     {
         textController.AddText(text);
-        inputField.text = "";
+        FinalizeTextShow();
     }
 
     private void ShowAcknowledgementText(string text)
     {
         textController.AddAcknowledgementText(text);
+        FinalizeTextShow();
+    }
+
+    public void ShowSelfText(string text)
+    {
+        textController.AddSelfText(text);
+        FinalizeTextShow();
+    }
+
+    private void FinalizeTextShow()
+    {
         inputField.text = "";
+        inputField.Select();
+        inputField.ActivateInputField();
+
+        contentRectTransform.SetLeft(10);
+        contentRectTransform.SetRight(10);
     }
 }

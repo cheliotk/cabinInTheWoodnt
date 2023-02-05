@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static DataStructures;
+using static UnityEditor.Progress;
 
 public class InputParser
 {
@@ -17,7 +18,7 @@ public class InputParser
     public static void ParseInput(string input)
     {
         string[] words = input.Split(' ');
-        if(words.Length > 2 )
+        if (words.Length > 2)
         {
             onInputParsed?.Invoke(instance, new ParserResultArgs(false, null, null, ParserFailType.INPUT_TOO_LONG));
         }
@@ -30,23 +31,31 @@ public class InputParser
         {
             //foreach (string verbSynonym in Vocabulary.VerbSynonyms[verb])
             //{
-                if(input.Contains(verb))
-                {
-                    return new VerbCheckResult(true, verb, Vocabulary.VerbStrToEnum(verb));
-                }
+            if (input.Contains(verb))
+            {
+                return new VerbCheckResult(true, verb, Vocabulary.VerbStrToEnum(verb));
+            }
             //}
         }
 
         return new VerbCheckResult(false, null, Verb.NONE);
     }
 
-    public static TargetCheckResult HasTarget(string input, List<Door> doors, List<Item> items)
+    public static TargetCheckResult HasTarget(string input, Room currentRoom)
     {
         input = input.ToUpper();
 
+        if (input.Contains(currentRoom.name))
+        {
+            return new TargetCheckResult(true, TargetCheckType.ROOM, currentRoom);
+        }
+
+        List<Door> doors = currentRoom.doors;
+        List<Item> items = currentRoom.items;
+
         foreach (Door door in doors)
         {
-            if(input.Contains(door.name))
+            if (input.Contains(door.name))
             {
                 return new TargetCheckResult(true, TargetCheckType.DOOR, door);
             }
@@ -54,7 +63,7 @@ public class InputParser
 
         foreach (Item item in items)
         {
-            if(input.Contains(item.name))
+            if (input.Contains(item.name))
             {
                 return new TargetCheckResult(true, TargetCheckType.ITEM, item);
             }
