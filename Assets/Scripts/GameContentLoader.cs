@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class GameContentLoader
 {
+    private const string COLOR_START_GRENDAR_INPUT = "<start_grendar_color>";
+    private const string COLOR_STOP_GRENDAR_INPUT = "<stop_grendar_color>";
+
+    private const string COLOR_START_GRENDAR_OUTPUT = "<color=#0CA789>";
+    private const string COLOR_STOP_GRENDAR_OUTPUT = "</color>";
+
+
     public static List<Door> LoadGameDoors(TextAsset doorsFile)
     {
         List<Door> doors = new List<Door>();
@@ -82,6 +89,9 @@ public class GameContentLoader
         room.shortDescription = roomNode["shortDescription"];
         room.extendedDescription = roomNode["extendedDescription"];
         room.selfDescription = roomNode["selfDescription"];
+
+        room.selfDescription = room.selfDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
+        room.selfDescription = room.selfDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
 
         int flagsCounter = 0;
         foreach (var verbIndex in roomNode["verbs"] as JSONArray)

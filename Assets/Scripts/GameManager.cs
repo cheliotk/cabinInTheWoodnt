@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static DataStructures;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isPaused { get; private set; } = false;
     public List<Door> doors;
     public List<Room> rooms;
     public List<Item> items;
@@ -21,10 +24,40 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextAsset roomsFile;
     [SerializeField] private TextAsset itemsFile;
     [SerializeField] private RectTransform contentRectTransform;
+    [SerializeField] private RectTransform pauseScreen;
 
     private void Start()
     {
         InitializeGame();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            TogglePauseScreen(isPaused);
+        }
+    }
+
+    private void TogglePauseScreen(bool gameIsPaused)
+    {
+        if(gameIsPaused)
+            ShowPauseScreen();
+        else
+            HidePauseScreen();
+    }
+
+    private void ShowPauseScreen()
+    {
+        DeactivateInputField();
+        pauseScreen.gameObject.SetActive(true);
+    }
+
+    private void HidePauseScreen()
+    {
+        pauseScreen.gameObject.SetActive(false);
+        ActivateInputField();
     }
 
     private void InitializeGame()
@@ -39,6 +72,9 @@ public class GameManager : MonoBehaviour
         SetupRooms();
 
         GoToRoom(currentRoomId);
+
+        isPaused = false;
+        TogglePauseScreen(isPaused);
     }
 
     private void SetupRooms()
@@ -63,6 +99,11 @@ public class GameManager : MonoBehaviour
         {
             FinalizeTextShow();
             return;
+        }
+
+        if(input.ToUpper() == "QUITGAME")
+        {
+            Application.Quit();
         }
 
         VerbCheckResult verbResult = InputParser.HasVerb(input);
@@ -179,7 +220,6 @@ public class GameManager : MonoBehaviour
             if (passDoorResult.success)
             {
                 GoToRoom(passDoorResult.newRoom.id);
-                ShowText($"You passed through the door");
             }
             else
             {
@@ -252,10 +292,24 @@ public class GameManager : MonoBehaviour
     private void FinalizeTextShow()
     {
         inputField.text = "";
-        inputField.Select();
-        inputField.ActivateInputField();
+        ActivateInputField();
 
         contentRectTransform.SetLeft(10);
         contentRectTransform.SetRight(10);
+    }
+
+    private void ActivateInputField()
+    {
+        inputField.enabled = true;
+        inputField.interactable = true;
+        inputField.Select();
+        inputField.ActivateInputField();
+    }
+
+    private void DeactivateInputField()
+    {
+        inputField.interactable = false;
+        inputField.DeactivateInputField();
+        inputField.enabled = false;
     }
 }

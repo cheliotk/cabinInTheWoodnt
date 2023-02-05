@@ -6,6 +6,7 @@
         "extendedDescription" : "The CABIN is further ahead.",
         "verbs" : [
             1,
+            4,
             16
         ],
         "roomIds" : [
@@ -18,10 +19,11 @@
     {
         "id" : "cabin_to_yard_0",
         "name" : "YARD",
-        "shortDescription" : "The large YARD is in front of the cabin.",
+        "shortDescription" : "The large YARD is behind me.",
         "extendedDescription" : "The large YARD sits in front of the cabin, with the two large trees arching before the cabin entrance.",
         "verbs" : [
             1,
+            4,
             16
         ],
         "roomIds" : [
