@@ -7,6 +7,7 @@ using UnityEngine;
 public class Room : ObjectBase
 {
     public string selfDescription;
+    public List<string> selfDescriptionBlock;
     public List<string> doorIds;
     public List<Door> doors { get; private set; }
 

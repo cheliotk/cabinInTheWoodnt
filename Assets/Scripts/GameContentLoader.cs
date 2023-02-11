@@ -120,6 +120,22 @@ public class GameContentLoader
         room.selfDescription = room.selfDescription.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
         room.selfDescription = room.selfDescription.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
 
+        room.selfDescriptionBlock = new List<string>();
+
+        foreach (var selfDescriptionEntry in roomNode["selfDescriptionBlock"] as JSONArray)
+        {
+            string value = selfDescriptionEntry.Value as JSONString;
+            value = value.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
+            value = value.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
+
+            value = value.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
+            value = value.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
+
+            value = value.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
+            value = value.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
+            room.selfDescriptionBlock.Add(value);
+        }
+
         room.imageSpriteIndex = roomNode["imageSpriteIndex"] as JSONNumber;
 
         int flagsCounter = 0;

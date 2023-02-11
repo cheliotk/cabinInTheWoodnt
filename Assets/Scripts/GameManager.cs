@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public bool musicOn { get; private set; } = true;
     private bool isInGame = false;
     private GameState gameState;
-    private GameState tempGameState;
+    private GameState tempGameState = GameState.IN_START_SCREEN;
 
     public List<Door> doors;
     public List<Room> rooms;
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Sprite> roomImageSprites;
     [SerializeField] private TextController textController;
     [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private TextMeshProUGUI placeholderText;
     [SerializeField] private AudioSource gameMusic;
 
     [SerializeField] private TextAsset doorsFile;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject inGameImage;
+
+    private bool hasAdvancedTextThisFrame = false;
 
     private void Start()
     {
@@ -64,13 +67,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if(gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE)
+            if(gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE && !hasAdvancedTextThisFrame)
             {
                 AdvanceOutputText();
             }
         }
+
+        hasAdvancedTextThisFrame = false;
     }
 
     private void SetEndScreen(bool endScreenOn)
@@ -96,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowPauseScreen()
     {
-        DeactivateInputField();
+        DeactivateInputField("Paused, press ESCAPE to return to game");
         pauseScreen.SetActive(true);
         tempGameState = gameState;
         gameState = GameState.IN_PAUSE_SCREEN;
@@ -105,8 +110,9 @@ public class GameManager : MonoBehaviour
     private void HidePauseScreen()
     {
         pauseScreen.SetActive(false);
-        ActivateInputField();
         gameState = tempGameState;
+        if(gameState == GameState.EXPECTING_PLAYER_TEXT || gameState == GameState.IN_START_SCREEN)
+            ActivateInputField();
     }
 
     private void ToggleMusic()
@@ -136,8 +142,6 @@ public class GameManager : MonoBehaviour
 
         menuScreen.SetActive(false);
 
-        GoToRoom(startRoomId);
-
         isPaused = false;
         SetPauseScreen(isPaused);
 
@@ -151,7 +155,9 @@ public class GameManager : MonoBehaviour
 
         isInGame = true;
 
-        gameState = GameState.EXPECTING_PLAYER_TEXT;
+        GoToRoom(startRoomId);
+
+        //gameState = GameState.EXPECTING_PLAYER_TEXT_ADVANCE;
     }
 
     private void SetupRooms()
@@ -167,14 +173,10 @@ public class GameManager : MonoBehaviour
     {
         currentRoomId = roomId;
         currentRoom = rooms.Find(x => x.id == currentRoomId);
-        ShowSelfText(currentRoom.selfDescription);
 
         inGameImage.GetComponent<Image>().sprite = roomImageSprites[currentRoom.imageSpriteIndex];
 
-        if(currentRoomId == endRoomId)
-        {
-            TriggerEndSequence();
-        }
+        ShowSelfText(currentRoom.selfDescriptionBlock);
     }
 
     private void TriggerEndSequence()
@@ -184,7 +186,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EndSequence()
     {
-        DeactivateInputField();
+        DeactivateInputField("The end.");
         yield return new WaitForSeconds(2);
         SetEndScreen(true);
         ActivateInputField();
@@ -203,7 +205,7 @@ public class GameManager : MonoBehaviour
             InitializeGame();
         }
 
-        ResetInputField();
+        //ResetInputField();
     }
 
     public void ParseInput(string input)
@@ -394,28 +396,46 @@ public class GameManager : MonoBehaviour
 
     private void AdvanceOutputText()
     {
+        ResetInputField();
         gameState = GameState.OUTPUTING_TEXT;
         textController.ShowNextText();
+
+        hasAdvancedTextThisFrame = true;
 
         if (textController.HasMoreText())
         {
             gameState = GameState.EXPECTING_PLAYER_TEXT_ADVANCE;
+            DeactivateInputField("Press ENTER to continue");
         }
         else
         {
-            ResetInputField();
+
+            if (currentRoomId == endRoomId)
+            {
+                TriggerEndSequence();
+            }
+            else
+            {
+                ResetInputField();
+            }
         }
     }
 
-    private void ShowStandardText(string text) => ShowText(text, TextType.STANDARD);
+    private void ShowStandardText(List<string> text) => ShowText(text, TextType.STANDARD);
 
-    private void ShowAcknowledgementText(string text) => ShowText(text, TextType.ACKNOWLEDGEMENT);
+    private void ShowAcknowledgementText(List<string> text) => ShowText(text, TextType.ACKNOWLEDGEMENT);
 
-    private void ShowSelfText(string text) => ShowText(text, TextType.SELF);
+    private void ShowSelfText(List<string> text) => ShowText(text, TextType.SELF);
 
-    private void ShowText(string text, TextType textType)
+    private void ShowStandardText(string text) => ShowText(new List<string> { text }, TextType.STANDARD);
+
+    private void ShowAcknowledgementText(string text) => ShowText(new List<string> { text }, TextType.ACKNOWLEDGEMENT);
+
+    private void ShowSelfText(string text) => ShowText(new List<string> { text }, TextType.SELF);
+
+    private void ShowText(List<string> text, TextType textType)
     {
-        textController.SetCurrentDescriptionsText(new List<string> { text }, textType);
+        textController.SetCurrentDescriptionsText(text, textType);
         AdvanceOutputText();
     }
 
@@ -434,13 +454,15 @@ public class GameManager : MonoBehaviour
     {
         inputField.enabled = true;
         inputField.interactable = true;
+        placeholderText.text = "What do you want to do?";
         inputField.Select();
         inputField.ActivateInputField();
     }
 
-    private void DeactivateInputField()
+    private void DeactivateInputField(string message)
     {
         inputField.interactable = false;
+        placeholderText.text = message;
         inputField.DeactivateInputField();
         inputField.enabled = false;
     }

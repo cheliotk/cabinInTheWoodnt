@@ -2026,6 +2026,7 @@ MonoBehaviour:
     extendedDescription: 
     validVerbs: 0
     selfDescription: 
+    selfDescriptionBlock: []
     doorIds: []
     itemIds: []
     imageSpriteIndex: 0
@@ -2036,9 +2037,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2fcb20a1cf0e01844a65adcac05164f9, type: 3}
   textController: {fileID: 1590021791}
   inputField: {fileID: 1603771960}
+  placeholderText: {fileID: 984864915}
   gameMusic: {fileID: 1299281322}
   doorsFile: {fileID: 4900000, guid: 07c68f0eb3dba2c4cab43907e9ebc364, type: 3}
-  roomsFile: {fileID: 4900000, guid: 60c2a6937522aee41ab07df76ba368e9, type: 3}
+  roomsFile: {fileID: 4900000, guid: b0ab229d68063e24eaeaa605610e917f, type: 3}
   itemsFile: {fileID: 4900000, guid: 2f6fe9d1f0804124080da3a517476405, type: 3}
   contentRectTransform: {fileID: 1147656276}
   pauseScreen: {fileID: 164039971}
@@ -3056,7 +3058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985016297504496461, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4985016298336021682, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchorMax.x

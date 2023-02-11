@@ -1,0 +1,125 @@
+[
+    {
+        "id": "yard_0",
+        "name": "yard",
+        "imageSpriteIndex" : 0,
+        "shortDescription": "I'm in the front yard.",
+        "extendedDescription": "I take a stroll around the yard. The old swing hanging from the apple tree, the blueberry bushes, it's all the same. But enough fooling around, it's getting late and cold, I need to get this over with.",
+        "selfDescription": "After all these years, I am standing again in this yard, the smell of snowy mud and elder pines permeating my nose. My childhood cabin, so different and yet so identical, brings back memories. But not necessarily good ones.\n\nI didn't want to come back here, however the two trees arching just before the cabin's porch are making me feel like home. I cannot recall them being there when I was a child, but they might have been mere sprouts back then.\n\nMaybe I should quit stalling the inevitable and go in.",
+        "selfDescriptionBlock" : [
+            "After all these years, I am standing again in this yard, the smell of snowy mud and elder pines permeating my nose. My childhood cabin, so different and yet so identical, brings back memories. But not necessarily good ones.",
+            "I didn't want to come back here, however the two trees arching just before the cabin's porch are making me feel like home. I cannot recall them being there when I was a child, but they might have been mere sprouts back then.",
+            "Maybe I should quit stalling the inevitable and go in."
+        ],
+        "stayText":"It is getting late and cold, I need to get this over with.",
+        "leaveText":"It is getting late and cold, I need to get this over with.",
+        "failText":"I think I'm so tired already that my thoughts are starting to be inconsistent. I should really go inside.",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "yard_to_cabin_0"
+        ],
+        "itemIds": [
+            "trees_yard_0"
+        ]
+    },
+    {
+        "id": "cabin_front_0",
+        "name": "CABIN",
+        "imageSpriteIndex" : 1,
+        "shortDescription": "I'm in front of the CABIN.",
+        "extendedDescription": "An old CABIN, made of pinewood that my parents harvested with great effort. I still remember the smile on my mother's face when the construction ended and she handed me the cabin's key.",
+        "selfDescription": "I grab the doorknob with one hand, while the other is looking for the key in my jeans' front pocket. But the door creaks open, just by jiggling the knob. Someone must have broken in, it's been abandoned for more than a decade after all. Or maybe.... maybe there is someone here now?",
+        "selfDescriptionBlock" : [
+            "I grab the doorknob with one hand, while the other is looking for the key in my jeans' front pocket. But the door creaks open, just by jiggling the knob. Someone must have broken in, it's been abandoned for more than a decade after all. Or maybe.... maybe there is someone here now?"
+        ],
+        "stayItemText":"I need to pull myself together. And I need to go inside.",
+        "failText":"I need to catch that little rascal first!",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "cabin_to_yard_0",
+            "cabin_to_lodge_0"
+        ],
+        "itemIds": [
+            
+        ]
+    },
+    {
+        "id": "lodge_0",
+        "name": "LODGE",
+        "imageSpriteIndex" : 2,
+        "shortDescription": "We are inside the cabin's LODGE",
+        "extendedDescription": "Grendar likes colors! Everything else here is boring! But there is an orange door, a blue one in the back and a red apothecary table! Very art nouveau if you ask me! The weird thing is... the lumber holding the cabin has started sprouting, chief...",
+        "selfDescription": "<start_grendar_color>I woodn't do that if I were you!<stop_grendar_color>\n<start_sound_color>*BANG!*\n*THUD!*<stop_sound_color>\n<start_grendar_color>Hey chief! Wake up! What happened?<stop_grendar_color>\nOuch, my head... Who... What... What did you do to me you little shit???\n<start_grendar_color>Grendar didn't do anything!<stop_grendar_color>\nMy eyes...I can't see anymore!\n<start_grendar_color>Ah! This house is a little cursed I think. I am not sure though!<stop_grendar_color>\nThis is all your fault! Now you are gonna help me get out of here! You'll be my eyes.\n<start_grendar_color>Grendar likes eyes! With chicken, and maple syrup!<stop_grendar_color>\nHelp me go back outside.\n<start_sound_color>*CLANK CLANK*<stop_sound_color>\n<start_grendar_color>The door won't budge chief.<stop_grendar_color>\nPfff, we shall find another way then.",
+        "selfDescriptionBlock" : [
+            "<start_grendar_color>I woodn't do that if I were you!<stop_grendar_color>",
+            "<start_sound_color>*BANG!*\n*THUD!*<stop_sound_color>",
+            "<start_grendar_color>Hey chief! Wake up! What happened?<stop_grendar_color>",
+            "Ouch, my head... Who... What... What did you do to me you little shit???",
+            "<start_grendar_color>Grendar didn't do anything!<stop_grendar_color>",
+            "My eyes...I can't see anymore!",
+            "<start_grendar_color>Ah! This house is a little cursed I think. I am not sure though!<stop_grendar_color>",
+            "This is all your fault! Now you are gonna help me get out of here! You'll be my eyes.",
+            "<start_grendar_color>Grendar likes eyes! With chicken, and maple syrup!<stop_grendar_color>",
+            "Help me go back outside.",
+            "<start_sound_color>*CLANK CLANK*<stop_sound_color>",
+            "<start_grendar_color>The door won't budge chief.<stop_grendar_color>",
+            "Pfff, we shall find another way then."
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "lodge_to_cabin_0",
+            "lodge_to_bedroom_0",
+            "lodge_to_sanctum_0"
+        ],
+        "itemIds": [
+            "apothecary_0",
+            "drawer_0",
+            "fireplace_0"
+        ]
+    },
+    {
+        "id": "bedroom_0",
+        "name": "BEDROOM",
+        "imageSpriteIndex" : 3,
+        "shortDescription": "I am inside the cabin's BEDROOM",
+        "extendedDescription": "",
+        "selfDescription": "I felt a soft air caressing my cheeks..\n<start_grendar_color>YIKES! What are you thinking about chief! This smeels like Grendar's pops! Grandar!<stop_grendar_color>\nWhat's wrong with your grandpa Grendar?\n<start_grendar_color>He dead chief! He dead! Can't you smell this smell of smelly corpses and death???<stop_grendar_color>\nHm... No...\nFirst my sight is gone, and now my sense of smell apparently...\n<start_grendar_color>You are the lucky one now chief! I wish I couldn't smell now... or see....<stop_grendar_color>\nMy mind though starts to disconnect from Grendar's voice, as I feel drawn to the far end of the room. The creature keeps begging me to come back, but my legs ignore him, as I fumble in the darkness. My hands touch what I assume is a tree.\n\nThe tree's trunk is rough and cold. As I pass my hand over it, I can tell it's not merely made of wood. This tree must have grown so abruptly that it ripped apart my parents' wardrobe, putting on what I assume once was my father's favorite sweater. My hand rests there for a while, as this is the first time something in this darned house brings back fond memories.\n\nA hand reaches for mine.\n\n*Gasps!*\n<start_tree_color>Fear not, child, it will all be over soon.<stop_tree_color>\nGr...Grendar?...\n<start_grendar_color>Grendar is sitting in the corner chief... The tr... the tree is...! Run!<stop_grendar_color>\nI try to shove the tree away, as if it would budge, and make a run for the door. But, what it felt like a million arms suddenly grab me from behind, headlocking me in place.\n<start_tree_color>Please child, burn me.<stop_tree_color>\nI struggle.\n<start_tree_color>I tried it myself when I still had legs, but the blue fire won't burn what is made of wood.<stop_tree_color>\nI feel the arms letting go. I turn and grabble the trunk in the direction of the voice.\nI...I...\nThe trunk has a human face. I can tell it feels my touch 'cause it closes its eyes as my fingers go over them. The neck sprouts like a branch, while the torso seems to be engulfed by the surrounding wood. I can tell where the ribcage is, as I touch the bare bones and what is left of its flesh and organs.\n<start_tree_color>Burn me<stop_tree_color>",
+        "selfDescriptionBlock" : [
+            "I felt a soft air caressing my cheeks..",
+            "<start_grendar_color>YIKES! What are you thinking about chief! This smeels like Grendar's pops! Grandar!<stop_grendar_color>",
+            "What's wrong with your grandpa Grendar?",
+            "<start_grendar_color>He dead chief! He dead! Can't you smell this smell of smelly corpses and death???<stop_grendar_color>",
+            "Hm... No...\nFirst my sight is gone, and now my sense of smell apparently...",
+            "<start_grendar_color>You are the lucky one now chief! I wish I couldn't smell now... or see....<stop_grendar_color>",
+            "My mind though starts to disconnect from Grendar's voice, as I feel drawn to the far end of the room. The creature keeps begging me to come back, but my legs ignore him, as I fumble in the darkness. My hands touch what I assume is a tree.",
+            "The tree's trunk is rough and cold. As I pass my hand over it, I can tell it's not merely made of wood. This tree must have grown so abruptly that it ripped apart my parents' wardrobe, putting on what I assume once was my father's favorite sweater. My hand rests there for a while, as this is the first time something in this darned house brings back fond memories.",
+            "A hand reaches for mine.\n\n*Gasps!*",
+            "<start_tree_color>Fear not, child, it will all be over soon.<stop_tree_color>",
+            "Gr...Grendar?...",
+            "<start_grendar_color>Grendar is sitting in the corner chief... The tr... the tree is...! Run!<stop_grendar_color>",
+            "I try to shove the tree away, as if it would budge, and make a run for the door. But, what it felt like a million arms suddenly grab me from behind, headlocking me in place.",
+            "<start_tree_color>Please child, burn me.<stop_tree_color>",
+            "I struggle.",
+            "<start_tree_color>I tried it myself when I still had legs, but the blue fire won't burn what is made of wood.<stop_tree_color>",
+            "I feel the arms letting go. I turn and grabble the trunk in the direction of the voice.",
+            "I...I...",
+            "The trunk has a human face. I can tell it feels my touch 'cause it closes its eyes as my fingers go over them. The neck sprouts like a branch, while the torso seems to be engulfed by the surrounding wood. I can tell where the ribcage is, as I touch the bare bones and what is left of its flesh and organs.",
+            "<start_tree_color>Burn me<stop_tree_color>"
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            
+        ],
+        "itemIds": [
+            
+        ]
+    }
+]
