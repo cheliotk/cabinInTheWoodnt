@@ -8,13 +8,14 @@ using static DataStructures;
 
 public class GameManager : MonoBehaviour
 {
+    private const string INPUT_PLACEHOLDER_TEXT_DEFAULT = "What do you want to do?";
     public bool isPaused { get; private set; } = false;
     public bool isInEndScreen { get; private set; } = false;
     public bool musicOn { get; private set; } = true;
     private bool isInGame = false;
     private GameState gameState;
     private GameState tempGameState = GameState.IN_START_SCREEN;
-
+    private string tempPlaceholderText = "";
     public List<Door> doors;
     public List<Room> rooms;
     public List<Item> items;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject inGameImage;
 
     private bool hasAdvancedTextThisFrame = false;
+
 
     private void Start()
     {
@@ -75,6 +77,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE)
+            {
+                ShowAllText();
+            }
+        }
+
         hasAdvancedTextThisFrame = false;
     }
 
@@ -101,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowPauseScreen()
     {
+        tempPlaceholderText = placeholderText.text;
         DeactivateInputField("Paused, press ESCAPE to return to game");
         pauseScreen.SetActive(true);
         tempGameState = gameState;
@@ -111,7 +122,9 @@ public class GameManager : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         gameState = tempGameState;
-        if(gameState == GameState.EXPECTING_PLAYER_TEXT || gameState == GameState.IN_START_SCREEN)
+        placeholderText.text = tempPlaceholderText;
+        if(gameState == GameState.EXPECTING_PLAYER_TEXT
+            || gameState == GameState.IN_START_SCREEN)
             ActivateInputField();
     }
 
@@ -139,6 +152,8 @@ public class GameManager : MonoBehaviour
         inputField.onEndEdit.AddListener(ParseInput);
 
         textController.RemoveAllEntries();
+
+        tempPlaceholderText = INPUT_PLACEHOLDER_TEXT_DEFAULT;
 
         menuScreen.SetActive(false);
 
@@ -424,6 +439,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void ShowAllText()
+    {
+        while (textController.HasMoreText())
+        {
+            AdvanceOutputText();
+        }
+    }
+
     private void ShowStandardText(List<string> text) => ShowText(text, TextType.STANDARD);
 
     private void ShowAcknowledgementText(List<string> text) => ShowText(text, TextType.ACKNOWLEDGEMENT);
@@ -445,6 +468,7 @@ public class GameManager : MonoBehaviour
     private void ResetInputField()
     {
         inputField.text = "";
+        placeholderText.text = INPUT_PLACEHOLDER_TEXT_DEFAULT;
         ActivateInputField();
 
         contentRectTransform.SetLeft(10);
@@ -457,7 +481,7 @@ public class GameManager : MonoBehaviour
     {
         inputField.enabled = true;
         inputField.interactable = true;
-        placeholderText.text = "What do you want to do?";
+        //placeholderText.text = tempPlaceholderText;
         inputField.Select();
         inputField.ActivateInputField();
     }
