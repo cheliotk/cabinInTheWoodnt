@@ -28,7 +28,7 @@ public class TextController : MonoBehaviour
     {
         string text = currentDescriptionTexts[currentDescriptionTextsCounter];
         var entry = Instantiate(textEntryPrefab, textContainer);
-        entry.GetComponent<TextEntry>().SetText(text, TextType.STANDARD);
+        entry.GetComponent<TextEntry>().SetText(text, textType);
         textsList.Add(entry);
 
         if (textsList.Count > maxTextsListCount)
@@ -37,42 +37,6 @@ public class TextController : MonoBehaviour
         }
 
         currentDescriptionTextsCounter++;
-    }
-    
-    public void AddText(string text)
-    {
-        var entry = Instantiate(textEntryPrefab, textContainer);
-        entry.GetComponent<TextEntry>().SetText(text, TextType.STANDARD);
-        textsList.Add(entry);
-
-        if(textsList.Count > maxTextsListCount)
-        {
-            RemoveFirstEntry();
-        }
-    }
-
-    public void AddAcknowledgementText(string text)
-    {
-        var entry = Instantiate(textEntryPrefab, textContainer);
-        entry.GetComponent<TextEntry>().SetText(text, TextType.ACKNOWLEDGEMENT);
-        textsList.Add(entry);
-
-        if (textsList.Count > maxTextsListCount)
-        {
-            RemoveFirstEntry();
-        }
-    }
-
-    public void AddSelfText(string text)
-    {
-        var entry = Instantiate(textEntryPrefab, textContainer);
-        entry.GetComponent<TextEntry>().SetText(text, TextType.SELF);
-        textsList.Add(entry);
-
-        if (textsList.Count > maxTextsListCount)
-        {
-            RemoveFirstEntry();
-        }
     }
 
     private void RemoveFirstEntry()

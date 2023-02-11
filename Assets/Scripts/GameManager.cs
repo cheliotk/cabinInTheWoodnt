@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isInEndScreen { get; private set; } = false;
     public bool musicOn { get; private set; } = true;
     private bool isInGame = false;
+    private GameState gameState;
 
     public List<Door> doors;
     public List<Room> rooms;
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
 
         isInEndScreen = false;
         SetEndScreen(isInEndScreen);
+
+        gameState = GameState.IN_START_SCREEN;
     }
 
     private void Update()
@@ -128,6 +131,8 @@ public class GameManager : MonoBehaviour
         StartMusic();
 
         isInGame = true;
+
+        gameState = GameState.EXPECTING_PLAYER_TEXT_ADVANCE;
     }
 
     private void SetupRooms()
@@ -252,7 +257,7 @@ public class GameManager : MonoBehaviour
         else if (targetResult.success)
         {
             ShowAcknowledgementText($"Interested in {targetResult.target.name}? OK");
-            ShowText($"{targetResult.target.shortDescription}");
+            ShowStandardText($"{targetResult.target.shortDescription}");
         }
         else
         {
@@ -265,7 +270,7 @@ public class GameManager : MonoBehaviour
         if (verbResult.verb == Verb.LOOK)
         {
             string roomDescription = currentRoom.extendedDescription;
-            ShowText($"{roomDescription}");
+            ShowStandardText($"{roomDescription}");
         }
     }
 
@@ -281,14 +286,14 @@ public class GameManager : MonoBehaviour
         if (itemsDesc != string.Empty)
             roomDescription += itemsDesc;
 
-        ShowText($"{roomDescription}");
+        ShowStandardText($"{roomDescription}");
     }
 
     private void InteractWithItem(Item item, VerbCheckResult verbResult)
     {
         if (verbResult.verb == Verb.LOOK)
         {
-            ShowText(item.extendedDescription);
+            ShowStandardText(item.extendedDescription);
         }
         else if (verbResult.verb == Verb.USE || verbResult.verb == Verb.OPEN)
         {
@@ -305,7 +310,7 @@ public class GameManager : MonoBehaviour
                 doors.Find(x => x.id == doorId).locked = false;
             }
             currentRoom.RemoveItem(item);
-            ShowText(item.useItemText);
+            ShowStandardText(item.useItemText);
         }
     }
 
@@ -322,11 +327,11 @@ public class GameManager : MonoBehaviour
             {
                 if (passDoorResult.locked)
                 {
-                    ShowText($"The door is locked");
+                    ShowStandardText($"The door is locked");
                 }
                 else if (passDoorResult.closed)
                 {
-                    ShowText($"The door is closed");
+                    ShowStandardText($"The door is closed");
                 }
             }
         }
@@ -340,24 +345,24 @@ public class GameManager : MonoBehaviour
         }
         else if (verbResult.verb == Verb.LOOK)
         {
-            ShowText($"{targetDoor.extendedDescription}");
+            ShowStandardText($"{targetDoor.extendedDescription}");
         }
         else if (verbResult.verb == Verb.OPEN)
         {
             var result = targetDoor.OpenDoor();
             if (result.success)
             {
-                ShowText($"The door is now open.");
+                ShowStandardText($"The door is now open.");
             }
             else
             {
                 if (result.locked)
                 {
-                    ShowText($"The door is locked.");
+                    ShowStandardText($"The door is locked.");
                 }
                 else if (result.alreadyOpen)
                 {
-                    ShowText($"The door is already open.");
+                    ShowStandardText($"The door is already open.");
                 }
             }
         }
@@ -368,22 +373,24 @@ public class GameManager : MonoBehaviour
         ShowAcknowledgementText($"I don't understand what you want me to do");
     }
 
-    private void ShowText(string text)
-    {
-        textController.AddText(text);
-        ResetInputField();
-    }
+    private void ShowStandardText(string text) => ShowText(text, TextType.STANDARD);
 
-    private void ShowAcknowledgementText(string text)
-    {
-        textController.AddAcknowledgementText(text);
-        ResetInputField();
-    }
+    private void ShowAcknowledgementText(string text) => ShowText(text, TextType.ACKNOWLEDGEMENT);
 
-    public void ShowSelfText(string text)
+    private void ShowSelfText(string text) => ShowText(text, TextType.SELF);
+
+    private void ShowText(string text, TextType textType)
     {
-        textController.AddSelfText(text);
-        ResetInputField();
+        textController.SetCurrentDescriptionsText(new List<string> { text });
+        textController.ShowNextText(textType);
+        if (textController.HasMoreText())
+        {
+
+        }
+        else
+        {
+            ResetInputField();
+        }
     }
 
     private void ResetInputField()
@@ -412,4 +419,15 @@ public class GameManager : MonoBehaviour
 
     private void StartMusic() => gameMusic.Play();
     private void StopMusic() => gameMusic.Stop();
+}
+
+public enum GameState
+{
+    NONE = 0,
+    IN_START_SCREEN = 1,
+    IN_END_SCREEN = 2,
+    IN_PAUSE_SCREEN = 3,
+    EXPECTING_PLAYER_TEXT = 4,
+    EXPECTING_PLAYER_TEXT_ADVANCE = 5,
+    OUTPUTING_TEXT = 6,
 }
