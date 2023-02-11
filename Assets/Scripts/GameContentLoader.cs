@@ -8,19 +8,19 @@ public class GameContentLoader
     private const string COLOR_START_GRENDAR_INPUT = "<start_grendar_color>";
     private const string COLOR_STOP_GRENDAR_INPUT = "<stop_grendar_color>";
 
-    private const string COLOR_START_GRENDAR_OUTPUT = "<color=#0CA789>";
+    private const string COLOR_START_GRENDAR_OUTPUT = "<color=#4FC878>";
     private const string COLOR_STOP_GRENDAR_OUTPUT = "</color>";
 
     private const string COLOR_START_TREE_INPUT = "<start_tree_color>";
     private const string COLOR_STOP_TREE_INPUT = "<stop_tree_color>";
 
-    private const string COLOR_START_TREE_OUTPUT = "<color=#DA0063>";
+    private const string COLOR_START_TREE_OUTPUT = "<color=#EF2D56>";
     private const string COLOR_STOP_TREE_OUTPUT = "</color>";
 
     private const string COLOR_START_SOUND_INPUT = "<start_sound_color>";
     private const string COLOR_STOP_SOUND_INPUT = "<stop_sound_color>";
 
-    private const string COLOR_START_SOUND_OUTPUT = "<color=#FFFFFF>";
+    private const string COLOR_START_SOUND_OUTPUT = "<color=#ED7D3A>";
     private const string COLOR_STOP_SOUND_OUTPUT = "</color>";
 
 

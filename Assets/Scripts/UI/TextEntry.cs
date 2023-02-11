@@ -15,13 +15,15 @@ public class TextEntry : MonoBehaviour
         switch (textType)
         {
             case TextType.SELF:
-                color = Color.grey;
+                ColorUtility.TryParseHtmlString("#E0C1B3", out color);
                 break;
             case TextType.ACKNOWLEDGEMENT:
                 color = Color.yellow;
                 break;
             case TextType.NONE:
             case TextType.STANDARD:
+                ColorUtility.TryParseHtmlString("#F2E3DC", out color);
+                break;
             default:
                 break;
         }

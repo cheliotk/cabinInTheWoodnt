@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
 
     public void ParseInput(string input)
     {
-        if(string.IsNullOrEmpty(input))
+        if(string.IsNullOrWhiteSpace(input))
         {
             ResetInputField();
             return;
@@ -244,8 +244,7 @@ public class GameManager : MonoBehaviour
         if (verbResult.success && targetResult.success)
         {
             bool canCombine = targetResult.target.validVerbs.HasFlag(verbResult.verb);
-            string successText = canCombine ? "OK" : "NO";
-            ShowAcknowledgementText($"{verbResult.verbString} {targetResult.target.name}? {successText}");
+            ShowAcknowledgementText($"{verbResult.verbString} {targetResult.target.name}");
 
             if (canCombine)
             {
@@ -262,27 +261,31 @@ public class GameManager : MonoBehaviour
                     InteractWithRoom(room, verbResult);
                 }
             }
+            else
+            {
+                ShowAcknowledgementText($"{verbResult.verbString} and {targetResult.target.name} do not work together.");
+            }
         }
         else if (verbResult.success)
         {
             if (verbResult.verb == Verb.LOOK)
             {
-                ShowAcknowledgementText($"{verbResult.verbString} around? OK");
+                ShowAcknowledgementText("LOOK");
                 LookAroundRoom(currentRoom);
             }
             else
             {
-                CommandNotUnderstood();
+                CommandNotUnderstood(input);
             }
         }
         else if (targetResult.success)
         {
-            ShowAcknowledgementText($"Interested in {targetResult.target.name}? OK");
+            ShowAcknowledgementText($"LOOK {targetResult.target.name}");
             ShowStandardText($"{targetResult.target.shortDescription}");
         }
         else
         {
-            CommandNotUnderstood();
+            CommandNotUnderstood(input);
         }
     }
 
@@ -389,9 +392,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CommandNotUnderstood()
+    private void CommandNotUnderstood(string inputText)
     {
-        ShowAcknowledgementText($"I don't understand what you want me to do");
+        ShowAcknowledgementText($"'{inputText}'\nI don't speak Cthulhu");
     }
 
     private void AdvanceOutputText()
@@ -429,7 +432,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowStandardText(string text) => ShowText(new List<string> { text }, TextType.STANDARD);
 
-    private void ShowAcknowledgementText(string text) => ShowText(new List<string> { text }, TextType.ACKNOWLEDGEMENT);
+    private void ShowAcknowledgementText(string text) => ShowText(new List<string> {"> " + text }, TextType.ACKNOWLEDGEMENT);
 
     private void ShowSelfText(string text) => ShowText(new List<string> { text }, TextType.SELF);
 
