@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool musicOn { get; private set; } = true;
     private bool isInGame = false;
     private GameState gameState;
+    private GameState tempGameState;
 
     public List<Door> doors;
     public List<Room> rooms;
@@ -51,10 +52,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(isInGame && Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-            SetPauseScreen(isPaused);
+            if(gameState == GameState.IN_PAUSE_SCREEN
+                || gameState == GameState.EXPECTING_PLAYER_TEXT
+                || gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE
+                || gameState == GameState.OUTPUTING_TEXT)
+            {
+                isPaused = !isPaused;
+                SetPauseScreen(isPaused);
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            if(gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE)
+            {
+                AdvanceOutputText();
+            }
         }
     }
 
@@ -67,6 +82,7 @@ public class GameManager : MonoBehaviour
             inputField.onEndEdit.RemoveAllListeners();
             inputField.onEndEdit.AddListener(ParseMenuInput);
             StopMusic();
+            gameState = GameState.IN_END_SCREEN;
         }
     }
 
@@ -82,12 +98,15 @@ public class GameManager : MonoBehaviour
     {
         DeactivateInputField();
         pauseScreen.SetActive(true);
+        tempGameState = gameState;
+        gameState = GameState.IN_PAUSE_SCREEN;
     }
 
     private void HidePauseScreen()
     {
         pauseScreen.SetActive(false);
         ActivateInputField();
+        gameState = tempGameState;
     }
 
     private void ToggleMusic()
@@ -132,7 +151,7 @@ public class GameManager : MonoBehaviour
 
         isInGame = true;
 
-        gameState = GameState.EXPECTING_PLAYER_TEXT_ADVANCE;
+        gameState = GameState.EXPECTING_PLAYER_TEXT;
     }
 
     private void SetupRooms()
@@ -373,6 +392,21 @@ public class GameManager : MonoBehaviour
         ShowAcknowledgementText($"I don't understand what you want me to do");
     }
 
+    private void AdvanceOutputText()
+    {
+        gameState = GameState.OUTPUTING_TEXT;
+        textController.ShowNextText();
+
+        if (textController.HasMoreText())
+        {
+            gameState = GameState.EXPECTING_PLAYER_TEXT_ADVANCE;
+        }
+        else
+        {
+            ResetInputField();
+        }
+    }
+
     private void ShowStandardText(string text) => ShowText(text, TextType.STANDARD);
 
     private void ShowAcknowledgementText(string text) => ShowText(text, TextType.ACKNOWLEDGEMENT);
@@ -381,16 +415,8 @@ public class GameManager : MonoBehaviour
 
     private void ShowText(string text, TextType textType)
     {
-        textController.SetCurrentDescriptionsText(new List<string> { text });
-        textController.ShowNextText(textType);
-        if (textController.HasMoreText())
-        {
-
-        }
-        else
-        {
-            ResetInputField();
-        }
+        textController.SetCurrentDescriptionsText(new List<string> { text }, textType);
+        AdvanceOutputText();
     }
 
     private void ResetInputField()
@@ -400,6 +426,8 @@ public class GameManager : MonoBehaviour
 
         contentRectTransform.SetLeft(10);
         contentRectTransform.SetRight(10);
+
+        gameState = GameState.EXPECTING_PLAYER_TEXT;
     }
 
     private void ActivateInputField()

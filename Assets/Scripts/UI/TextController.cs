@@ -12,11 +12,13 @@ public class TextController : MonoBehaviour
     private List<GameObject> textsList = new List<GameObject>();
     private List<string> currentDescriptionTexts = new List<string>();
     private int currentDescriptionTextsCounter = 0;
+    private TextType currentTextType;
 
-    public void SetCurrentDescriptionsText(List<string> texts)
+    public void SetCurrentDescriptionsText(List<string> texts, TextType textType)
     {
         currentDescriptionTexts = texts;
         currentDescriptionTextsCounter = 0;
+        currentTextType = textType;
     }
 
     public bool HasMoreText()
@@ -24,11 +26,11 @@ public class TextController : MonoBehaviour
         return currentDescriptionTextsCounter < currentDescriptionTexts.Count;
     }
 
-    public void ShowNextText(TextType textType)
+    public void ShowNextText()
     {
         string text = currentDescriptionTexts[currentDescriptionTextsCounter];
         var entry = Instantiate(textEntryPrefab, textContainer);
-        entry.GetComponent<TextEntry>().SetText(text, textType);
+        entry.GetComponent<TextEntry>().SetText(text, currentTextType);
         textsList.Add(entry);
 
         if (textsList.Count > maxTextsListCount)
