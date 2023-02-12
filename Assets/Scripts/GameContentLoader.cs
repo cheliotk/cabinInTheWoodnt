@@ -63,13 +63,13 @@ public class GameContentLoader
         return items;
     }
 
-    private static Door ConvertDoorDataToDoor(JSONNode doorNode)
+    private static Door ConvertDoorDataToDoor(JSONNode node)
     {
         Door door = new Door();
-        door.id = doorNode["id"];
-        door.name = doorNode["name"].Value.ToUpper();
-        door.shortDescription = doorNode["shortDescription"];
-        door.extendedDescription = doorNode["extendedDescription"];
+        door.id = node["id"];
+        door.name = node["name"].Value.ToUpper();
+        door.shortDescription = node["shortDescription"];
+        door.extendedDescription = node["extendedDescription"];
 
         door.extendedDescription = door.extendedDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
         door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
@@ -80,14 +80,21 @@ public class GameContentLoader
         door.extendedDescription = door.extendedDescription.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
         door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
 
+        door.extendedDescriptionBlock = new List<string>();
+        foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
+        {
+            string value = descriptionEntry.Value as JSONString;
+            door.extendedDescriptionBlock.Add(value);
+        }
+
         List<string> roomIds = new List<string>();
-        foreach (var roomId in doorNode["roomIds"] as JSONArray)
+        foreach (var roomId in node["roomIds"] as JSONArray)
         {
             roomIds.Add(roomId.Value as JSONString);
         }
 
         int flagsCounter = 0;
-        foreach (var verbIndex in doorNode["verbs"] as JSONArray)
+        foreach (var verbIndex in node["verbs"] as JSONArray)
         {
             int value = (verbIndex.Value as JSONNumber).AsInt;
             flagsCounter += value;
@@ -96,20 +103,20 @@ public class GameContentLoader
         door.validVerbs = (Verb)flagsCounter;
         
         door.roomIds = roomIds;
-        door.locked = doorNode["locked"];
-        door.closed = doorNode["closed"];
+        door.locked = node["locked"];
+        door.closed = node["closed"];
 
         return door;
     }
 
-    private static Room ConvertRoomDataToRoom(JSONNode roomNode)
+    private static Room ConvertRoomDataToRoom(JSONNode node)
     {
         Room room = new Room();
-        room.id = roomNode["id"];
-        room.name = roomNode["name"].Value.ToUpper();
-        room.shortDescription = roomNode["shortDescription"];
-        room.extendedDescription = roomNode["extendedDescription"];
-        room.selfDescription = roomNode["selfDescription"];
+        room.id = node["id"];
+        room.name = node["name"].Value.ToUpper();
+        room.shortDescription = node["shortDescription"];
+        room.extendedDescription = node["extendedDescription"];
+        room.selfDescription = node["selfDescription"];
 
         room.selfDescription = room.selfDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
         room.selfDescription = room.selfDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
@@ -122,7 +129,7 @@ public class GameContentLoader
 
         room.selfDescriptionBlock = new List<string>();
 
-        foreach (var selfDescriptionEntry in roomNode["selfDescriptionBlock"] as JSONArray)
+        foreach (var selfDescriptionEntry in node["selfDescriptionBlock"] as JSONArray)
         {
             string value = selfDescriptionEntry.Value as JSONString;
             value = value.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
@@ -136,10 +143,17 @@ public class GameContentLoader
             room.selfDescriptionBlock.Add(value);
         }
 
-        room.imageSpriteIndex = roomNode["imageSpriteIndex"] as JSONNumber;
+        room.extendedDescriptionBlock = new List<string>();
+        foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
+        {
+            string value = descriptionEntry.Value as JSONString;
+            room.extendedDescriptionBlock.Add(value);
+        }
+
+        room.imageSpriteIndex = node["imageSpriteIndex"] as JSONNumber;
 
         int flagsCounter = 0;
-        foreach (var verbIndex in roomNode["verbs"] as JSONArray)
+        foreach (var verbIndex in node["verbs"] as JSONArray)
         {
             int value = (verbIndex.Value as JSONNumber).AsInt;
             flagsCounter += value;
@@ -148,7 +162,7 @@ public class GameContentLoader
         room.validVerbs = (Verb)flagsCounter;
 
         List<string> doorIds = new List<string>();
-        foreach (var roomId in roomNode["doorIds"] as JSONArray)
+        foreach (var roomId in node["doorIds"] as JSONArray)
         {
             doorIds.Add(roomId.Value as JSONString);
         }
@@ -156,7 +170,7 @@ public class GameContentLoader
         room.doorIds = doorIds;
 
         List<string> itemIds = new List<string>();
-        foreach (var roomId in roomNode["itemIds"] as JSONArray)
+        foreach (var roomId in node["itemIds"] as JSONArray)
         {
             itemIds.Add(roomId.Value as JSONString);
         }
@@ -166,16 +180,30 @@ public class GameContentLoader
         return room;
     }
 
-    public static Item ConvertItemDataToItem(JSONNode itemNode)
+    public static Item ConvertItemDataToItem(JSONNode node)
     {
         Item item = new Item();
-        item.id = itemNode["id"];
-        item.name = itemNode["name"].Value.ToUpper();
-        item.shortDescription = itemNode["shortDescription"];
-        item.extendedDescription = itemNode["extendedDescription"];
+        item.id = node["id"];
+        item.name = node["name"].Value.ToUpper();
+        item.shortDescription = node["shortDescription"];
+        item.extendedDescription = node["extendedDescription"];
+
+        item.extendedDescriptionBlock = new List<string>();
+        foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
+        {
+            string value = descriptionEntry.Value as JSONString;
+            item.extendedDescriptionBlock.Add(value);
+        }
+
+        item.useItemTextBlock = new List<string>();
+        foreach (var entry in node["useItemTextBlock"] as JSONArray)
+        {
+            string value = entry.Value as JSONString;
+            item.useItemTextBlock.Add(value);
+        }
 
         int flagsCounter = 0;
-        foreach (var verbIndex in itemNode["verbs"] as JSONArray)
+        foreach (var verbIndex in node["verbs"] as JSONArray)
         {
             int value = (verbIndex.Value as JSONNumber).AsInt;
             flagsCounter += value;
@@ -184,7 +212,7 @@ public class GameContentLoader
         item.validVerbs = (Verb)flagsCounter;
 
         List<string> doorIdsToUnlock = new List<string>();
-        foreach (var doorId in itemNode["doorIdsToUnlock"] as JSONArray)
+        foreach (var doorId in node["doorIdsToUnlock"] as JSONArray)
         {
             doorIdsToUnlock.Add(doorId.Value as JSONString);
         }
@@ -192,14 +220,14 @@ public class GameContentLoader
         item.doorIdsToUnlock = doorIdsToUnlock;
 
         List<string> itemIdsToUnlock = new List<string>();
-        foreach (var itemId in itemNode["itemIdsToUnlock"] as JSONArray)
+        foreach (var itemId in node["itemIdsToUnlock"] as JSONArray)
         {
             itemIdsToUnlock.Add(itemId.Value as JSONString);
         }
 
         item.itemIdsToUnlock = itemIdsToUnlock;
 
-        item.useItemText = itemNode["useItemText"] as JSONString;
+        item.useItemText = node["useItemText"] as JSONString;
 
         return item;
     }

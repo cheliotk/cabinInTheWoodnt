@@ -9,4 +9,5 @@ public class Item : ObjectBase
     public List<string> itemIdsToUnlock;
     public List<string> doorIdsToUnlock;
     public string useItemText;
+    public List<string> useItemTextBlock;
 }
