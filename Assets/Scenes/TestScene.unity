@@ -2024,6 +2024,7 @@ MonoBehaviour:
     name: 
     shortDescription: 
     extendedDescription: 
+    extendedDescriptionBlock: []
     validVerbs: 0
     selfDescription: 
     selfDescriptionBlock: []
@@ -2039,9 +2040,9 @@ MonoBehaviour:
   inputField: {fileID: 1603771960}
   placeholderText: {fileID: 984864915}
   gameMusic: {fileID: 1299281322}
-  doorsFile: {fileID: 4900000, guid: 07c68f0eb3dba2c4cab43907e9ebc364, type: 3}
+  doorsFile: {fileID: 4900000, guid: 8b42080be32f6164e818e113e965f4d2, type: 3}
   roomsFile: {fileID: 4900000, guid: b0ab229d68063e24eaeaa605610e917f, type: 3}
-  itemsFile: {fileID: 4900000, guid: 2f6fe9d1f0804124080da3a517476405, type: 3}
+  itemsFile: {fileID: 4900000, guid: b92e2b7362bdefd4d8372b01cbed9d26, type: 3}
   contentRectTransform: {fileID: 1147656276}
   pauseScreen: {fileID: 164039971}
   menuScreen: {fileID: 1986658982}
@@ -3058,7 +3059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985016297504496461, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4985016298336021682, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchorMax.x

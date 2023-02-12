@@ -6,22 +6,19 @@ using UnityEngine;
 public class GameContentLoader
 {
     private const string COLOR_START_GRENDAR_INPUT = "<start_grendar_color>";
-    private const string COLOR_STOP_GRENDAR_INPUT = "<stop_grendar_color>";
 
     private const string COLOR_START_GRENDAR_OUTPUT = "<color=#4FC878>";
-    private const string COLOR_STOP_GRENDAR_OUTPUT = "</color>";
 
     private const string COLOR_START_TREE_INPUT = "<start_tree_color>";
-    private const string COLOR_STOP_TREE_INPUT = "<stop_tree_color>";
 
     private const string COLOR_START_TREE_OUTPUT = "<color=#EF2D56>";
-    private const string COLOR_STOP_TREE_OUTPUT = "</color>";
 
     private const string COLOR_START_SOUND_INPUT = "<start_sound_color>";
-    private const string COLOR_STOP_SOUND_INPUT = "<stop_sound_color>";
 
     private const string COLOR_START_SOUND_OUTPUT = "<color=#ED7D3A>";
-    private const string COLOR_STOP_SOUND_OUTPUT = "</color>";
+
+    private const string COLOR_STOP_INPUT = "<stop_color>";
+    private const string COLOR_STOP_OUTPUT = "</color>";
 
 
     public static List<Door> LoadGameDoors(TextAsset doorsFile)
@@ -71,15 +68,6 @@ public class GameContentLoader
         door.shortDescription = node["shortDescription"];
         door.extendedDescription = node["extendedDescription"];
 
-        door.extendedDescription = door.extendedDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
-        door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
-
-        door.extendedDescription = door.extendedDescription.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
-        door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
-
-        door.extendedDescription = door.extendedDescription.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
-        door.extendedDescription = door.extendedDescription.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
-
         door.extendedDescriptionBlock = new List<string>();
         foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
         {
@@ -118,28 +106,14 @@ public class GameContentLoader
         room.extendedDescription = node["extendedDescription"];
         room.selfDescription = node["selfDescription"];
 
-        room.selfDescription = room.selfDescription.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
-        room.selfDescription = room.selfDescription.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
-
-        room.selfDescription = room.selfDescription.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
-        room.selfDescription = room.selfDescription.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
-
-        room.selfDescription = room.selfDescription.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
-        room.selfDescription = room.selfDescription.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
+        room.selfDescription = SetupColors(room.selfDescription);
 
         room.selfDescriptionBlock = new List<string>();
 
         foreach (var selfDescriptionEntry in node["selfDescriptionBlock"] as JSONArray)
         {
             string value = selfDescriptionEntry.Value as JSONString;
-            value = value.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
-            value = value.Replace(COLOR_STOP_GRENDAR_INPUT, COLOR_STOP_GRENDAR_OUTPUT);
-
-            value = value.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
-            value = value.Replace(COLOR_STOP_TREE_INPUT, COLOR_STOP_TREE_OUTPUT);
-
-            value = value.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
-            value = value.Replace(COLOR_STOP_SOUND_INPUT, COLOR_STOP_SOUND_OUTPUT);
+            value = SetupColors(value);
             room.selfDescriptionBlock.Add(value);
         }
 
@@ -230,5 +204,15 @@ public class GameContentLoader
         item.useItemText = node["useItemText"] as JSONString;
 
         return item;
+    }
+
+    private static string SetupColors(string input)
+    {
+        input = input.Replace(COLOR_START_GRENDAR_INPUT, COLOR_START_GRENDAR_OUTPUT);
+        input = input.Replace(COLOR_START_TREE_INPUT, COLOR_START_TREE_OUTPUT);
+        input = input.Replace(COLOR_START_SOUND_INPUT, COLOR_START_SOUND_OUTPUT);
+        input = input.Replace(COLOR_STOP_INPUT, COLOR_STOP_OUTPUT);
+
+        return input;
     }
 }
