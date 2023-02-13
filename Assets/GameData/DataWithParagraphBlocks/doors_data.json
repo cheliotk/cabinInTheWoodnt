@@ -5,7 +5,8 @@
         "shortDescription" : "The CABIN sits at the back of the yard.",
         "extendedDescription" : "The CABIN is further ahead.",
         "extendedDescriptionBlock" : [
-
+            "text1",
+            "text2"
         ],
         "verbs" : [
             1,

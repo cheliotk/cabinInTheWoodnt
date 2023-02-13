@@ -5,10 +5,12 @@
         "shortDescription": "There are two TREES in front of the cabin.",
         "extendedDescription": "These trees are beautiful. Their branches lean towards one another, making them look as if they are trying to hug.",
         "extendedDescriptionBlock" : [
-
+            "text1",
+            "text2"
         ],
         "useItemTextBlock" : [
-
+            "text1",
+            "text2"
         ],
         "useItemText": "",
         "verbs": [
