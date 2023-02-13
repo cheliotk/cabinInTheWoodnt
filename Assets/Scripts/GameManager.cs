@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public List<Item> items;
     public string currentRoomId;
     public string startRoomId;
-    public string endRoomId;
+    public List<string> endRoomIds;
     public Room currentRoom;
 
     private InputParser inputParser;
@@ -428,7 +428,7 @@ public class GameManager : MonoBehaviour
         else
         {
 
-            if (currentRoomId == endRoomId)
+            if (endRoomIds.Contains(currentRoomId))
             {
                 TriggerEndSequence();
             }
