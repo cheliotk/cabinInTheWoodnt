@@ -2037,6 +2037,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1569617a66f5edd47b34038244de3713, type: 3}
   - {fileID: 21300000, guid: 0ca3a04fcf4bdd144ba7608af17ffa11, type: 3}
   - {fileID: 21300000, guid: 2fcb20a1cf0e01844a65adcac05164f9, type: 3}
+  - {fileID: 21300000, guid: 6b5d7dfecd1e0f041b0c1f8a72c70dae, type: 3}
+  - {fileID: 21300000, guid: 3367c8ddb06e3bc49b1cc280a8c15ef9, type: 3}
+  - {fileID: 21300000, guid: 53756d544a4c250478a07dcb8c8beaa9, type: 3}
+  - {fileID: 21300000, guid: cfe0ecd5fee579f44b1143a970d4412a, type: 3}
+  - {fileID: 21300000, guid: 7817367a05d8a754897ff24ed8a95518, type: 3}
   textController: {fileID: 1590021791}
   inputField: {fileID: 1603771960}
   placeholderText: {fileID: 984864915}
