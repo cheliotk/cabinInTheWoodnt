@@ -320,7 +320,8 @@ public class GameManager : MonoBehaviour
         if (verbResult.verb == Verb.LOOK)
         {
             string roomDescription = currentRoom.extendedDescription;
-            ShowStandardText($"{roomDescription}");
+            //ShowStandardText($"{roomDescription}");
+            ShowStandardText(currentRoom.extendedDescriptionBlock);
         }
     }
 
