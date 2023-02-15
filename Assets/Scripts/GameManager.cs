@@ -319,9 +319,10 @@ public class GameManager : MonoBehaviour
     {
         if (verbResult.verb == Verb.LOOK)
         {
-            string roomDescription = currentRoom.extendedDescription;
-            //ShowStandardText($"{roomDescription}");
-            ShowStandardText(currentRoom.extendedDescriptionBlock);
+            if (currentRoom.extendedDescriptionBlock.Count > 0)
+                ShowStandardText(currentRoom.extendedDescriptionBlock);
+            else
+                ShowStandardText(currentRoom.extendedDescription);
         }
     }
 
@@ -344,7 +345,10 @@ public class GameManager : MonoBehaviour
     {
         if (verbResult.verb == Verb.LOOK)
         {
-            ShowStandardText(item.extendedDescription);
+            if(item.extendedDescriptionBlock.Count > 0)
+                ShowStandardText(item.extendedDescriptionBlock);
+            else
+                ShowStandardText(item.extendedDescription);
         }
         else if (verbResult.verb == Verb.USE || verbResult.verb == Verb.OPEN)
         {
@@ -361,7 +365,10 @@ public class GameManager : MonoBehaviour
                 doors.Find(x => x.id == doorId).locked = false;
             }
             currentRoom.RemoveItem(item);
-            ShowStandardText(item.useItemText);
+            if(item.useItemTextBlock.Count > 0)
+                ShowStandardText(item.useItemTextBlock);
+            else
+                ShowStandardText(item.useItemText);
         }
     }
 
@@ -396,7 +403,10 @@ public class GameManager : MonoBehaviour
         }
         else if (verbResult.verb == Verb.LOOK)
         {
-            ShowStandardText($"{targetDoor.extendedDescription}");
+            if(targetDoor.extendedDescriptionBlock.Count > 0)
+                ShowStandardText(targetDoor.extendedDescriptionBlock);
+            else
+                ShowStandardText(targetDoor.extendedDescription);
         }
         else if (verbResult.verb == Verb.OPEN)
         {

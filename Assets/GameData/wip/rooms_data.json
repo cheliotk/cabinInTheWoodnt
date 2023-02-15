@@ -135,15 +135,8 @@
         ],
         "itemIds": [
 			"axe_0",
-			"axe_1",
-			"axe_2",
-			"stick_0",
-			"torch_0",
 			"tree_0",
-			"tree_1",
-			"candles_0"
-			
-            
+			"candles_0" 
         ]
     },
 
@@ -172,7 +165,8 @@
         ],
         "itemIds": [
 			"orange_door_fake_0",
-			"orange_lever_0"
+			"orange_lever_0",
+			"tree_2"
             
         ]
     },
@@ -237,15 +231,10 @@
             1
         ],
         "doorIds": [
-			"sanctum_orange_door_vision"
-            
+			"sanctum_orange_door_blind"     
         ],
         "itemIds": [
 			"knife_0",
-			"knife_1",
-			"knife_2",
-			"orange_door_fake_1",
-			"roots_0",
 			"spore_0",
 			"spore_1",
 			"spore_2"

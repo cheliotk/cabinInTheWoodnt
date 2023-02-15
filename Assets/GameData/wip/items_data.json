@@ -121,7 +121,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
 			"axe_1"
@@ -145,33 +146,11 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
 			"stick_0"
-            
-        ],
-        "doorIdsToUnlock": [
-        ]
-    },
-    {
-        "id": "axe_2",
-        "name": "AXE",
-        "shortDescription": "AXE2 shortDesc",
-        "extendedDescription": "",
-        "extendedDescriptionBlock" : [
-			"AXE2 extDescBlock"
-
-        ],
-        "useItemTextBlock" : [
-			"AXE2 use item block"
-
-        ],
-        "useItemText":"",
-        "verbs": [
-            1
-        ],
-        "itemIdsToUnlock": [
             
         ],
         "doorIdsToUnlock": [
@@ -192,7 +171,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
 			"torch_0"
@@ -219,7 +199,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
             
@@ -299,7 +280,7 @@
     },
     {
         "id": "orange_lever_0",
-        "name": "ORANGE LEVER",
+        "name": "LATCH",
         "shortDescription": "<start_grendar_color>There is a LATCH on the door.<stop_color>",
         "extendedDescription": "",
         "extendedDescriptionBlock" : [
@@ -312,7 +293,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
             
@@ -405,7 +387,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
 			"roots_0"
@@ -432,15 +415,15 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
-            "sanctum_orange_door_vision",
 			"knife_2"
         ],
         "doorIdsToUnlock": [
 			"red_door_freedom",
-			"sanctum_orange_door_vision"
+			"sanctum_orange_door_blind"
         ]
     },
     {
@@ -457,7 +440,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
             
@@ -503,7 +487,8 @@
         ],
         "useItemText":"",
         "verbs": [
-            1
+            1,
+            8
         ],
         "itemIdsToUnlock": [
 			"knife_1"
@@ -562,7 +547,7 @@
     },
     {
         "id": "spore_2",
-        "name": "",
+        "name": "SPORE",
         "shortDescription": "<start_internal_color>There is a dark, shriveled SPORE in the middle of the room.<stop_color>",
         "extendedDescription": "",
         "extendedDescriptionBlock" : [

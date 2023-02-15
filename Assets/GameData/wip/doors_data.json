@@ -154,8 +154,8 @@
             4
         ],
         "roomIds" : [
-            "lodge_0",
-            "bedroom_0"
+            "lodge_15",
+            "sanctum_2"
         ],
         "locked" : true,
         "closed" : true
@@ -171,13 +171,16 @@
         "verbs" : [
             1,
             2,
-            4
+            4,
+			16
         ],
         "roomIds" : [
-            "bedroom_0"
+            "bedroom_0",
+			"sanctum_25"
+			
         ],
         "locked" : true,
-        "closed" : true
+        "closed" : false
     },
 	{
         "id" : "bedroom_to_lodge_2",
@@ -196,7 +199,7 @@
             "sanctum_25",
             "lodge_15"
         ],
-        "locked" : true,
+        "locked" : false,
         "closed" : true
     },
 	{
@@ -216,7 +219,7 @@
             "sanctum_25",
             "lodge_15"
         ],
-        "locked" : true,
+        "locked" : false,
         "closed" : true
     },
 	{
@@ -232,8 +235,8 @@
             4
         ],
         "roomIds" : [
-            "lodge_0",
-            "bedroom_0"
+            "sanctum_2",
+            "lodge_19"
         ],
         "locked" : true,
         "closed" : true
@@ -249,8 +252,8 @@
             
         ],
         "roomIds" : [
-            "lodge_0",
-            "bedroom_0"
+            "sanctum_2",
+            "lodge_19"
         ],
         "locked" : true,
         "closed" : true
@@ -265,11 +268,12 @@
         "verbs" : [
             1,
             2,
-            4
+            4,
+			16
         ],
         "roomIds" : [
-            "lodge_0",
-            "bedroom_0"
+            "lodge_19",
+            "yard_2"
         ],
         "locked" : true,
         "closed" : true
