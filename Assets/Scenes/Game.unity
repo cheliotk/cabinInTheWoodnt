@@ -2017,7 +2017,7 @@ MonoBehaviour:
   rooms: []
   items: []
   currentRoomId: 
-  startRoomId: lodge_15
+  startRoomId: yard_0
   endRoomIds:
   - yard_2
   currentRoom:
