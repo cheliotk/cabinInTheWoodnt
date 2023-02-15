@@ -69,11 +69,22 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if(gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE && !hasAdvancedTextThisFrame)
+            if (gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE && !hasAdvancedTextThisFrame)
             {
                 AdvanceOutputText();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE && !hasAdvancedTextThisFrame)
+            {
+                while(gameState == GameState.EXPECTING_PLAYER_TEXT_ADVANCE)
+                {
+                    AdvanceOutputText();
+                }
             }
         }
 
@@ -423,7 +434,7 @@ public class GameManager : MonoBehaviour
         if (textController.HasMoreText())
         {
             gameState = GameState.EXPECTING_PLAYER_TEXT_ADVANCE;
-            DeactivateInputField("Press ENTER to continue");
+            DeactivateInputField("Press ENTER to continue, TAB to fast forward");
         }
         else
         {

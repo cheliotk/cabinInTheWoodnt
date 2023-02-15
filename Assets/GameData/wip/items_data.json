@@ -1,0 +1,588 @@
+[
+    {
+        "id": "trees_yard_0",
+        "name": "TREES",
+        "shortDescription": "There are two TREES in front of the cabin.",
+        "extendedDescription": "These trees are beautiful. Their branches lean towards one another, making them look as if they are trying to hug.",
+        "extendedDescriptionBlock" : [
+        ],
+        "useItemTextBlock" : [
+        ],
+        "useItemText": "",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "apothecary_0",
+        "name": "TABLE",
+        "shortDescription": "On the right side of the room stands an apothecary TABLE.",
+        "extendedDescription": "This apothecary TABLE was bought by my father, from a pawn shop in the nearby town. The shopkeeper insisted that it was an item of great value, but my father didn't seem to buy it. Well, he bought the TABLE, but the old man's exaggerations regarding the its origins seemed a bit exaggerated.",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "useItemTextBlock" : [
+
+        ],
+        "useItemText": "",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "drawer_0",
+        "name": "DRAWER",
+        "shortDescription": "The DRAWER has wooden ornaments.",
+        "extendedDescription": "A beautiful engraving decorates the DRAWER's facade, depicting a wolf and a myrtle tree.",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "useItemTextBlock" : [
+
+        ],
+        "useItemText": "There's a key here, chief!",
+        "verbs": [
+            1,2,8
+        ],
+        "itemIdsToUnlock": [
+            "key_0"
+        ],
+        "doorIdsToUnlock": [
+
+        ]
+    },
+    {
+        "id": "key_0",
+        "name": "KEY",
+        "shortDescription": "The KEY is... shiny?",
+        "extendedDescription": "The KEY seems fairly simple compared to the table, it looks like it belongs someplace else...",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "useItemTextBlock" : [
+
+        ],
+        "useItemText": "Shiny KEY IS OURS!",
+        "verbs": [
+            1,
+            8
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+            "lodge_to_bedroom_0"
+        ]
+    },
+    {
+        "id": "fireplace_0",
+        "name": "FIREPLACE",
+        "shortDescription": "Right across the room is an old FIREPLACE made of stone.",
+        "extendedDescription": "Grendar once tried to light up the fireplace to warm up but the fire didn't like it.",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "useItemTextBlock" : [
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "axe_0",
+        "name": "AXE",
+        "shortDescription": "<start_grendar_color>There is AXE on the floor.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>The AXE looks heavy chief! I'm not picking that up!<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I pick the AXE instead, since Grendar apparently is useless.<stop_color>"
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+			"axe_1"
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "axe_1",
+        "name": "AXE",
+        "shortDescription": "<start_internal_color>The AXE is indeed heavy, What do you know!<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>The AXE head is made of metal and the wooden handle looks... wasted....<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I swing the AXE at the VINES in order to free the door, but the AXE breaks leaving me with a pointy STICK.<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+			"stick_0"
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "axe_2",
+        "name": "AXE",
+        "shortDescription": "AXE2 shortDesc",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"AXE2 extDescBlock"
+
+        ],
+        "useItemTextBlock" : [
+			"AXE2 use item block"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "stick_0",
+        "name": "STICK",
+        "shortDescription": "<start_grendar_color>There is a pointy STICK now, instead of an axe.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>It's weird that this STICK is so dry...<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I set the STICK ablaze on the candles' fire, leaving me with a TORCH.<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+			"torch_0"
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "torch_0",
+        "name": "TORCH",
+        "shortDescription": "<start_grendar_color>There is a TORCH, burning with a blue flame.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>I can feel the fire burning, but it's so cold... The blue fire must have been part of a ritual... I don't know what this TORCH could burn.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I tend the flame to its flesh, and as I hear the fire speading, a hand grabs me soflty by the shoulder.<stop_color>",
+			"<start_tree_color><Thank you.><stop_color>",
+			"<start_internal_color>I feel the cold flame dancing in front of me as it devours the remains of this former human being.<stop_color>",
+			"<start_grendar_color>Chief! Look!<stop_color>",
+			"<start_grendar_color>Sorry, that was insensitive of me, he he! The roots are shriveling away! You are still too big to go through, but Grendar can!<stop_color>"
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+			"bedroom_vines"
+        ]
+    },
+    {
+        "id": "tree_0",
+        "name": "TREE",
+        "shortDescription": "<start_grendar_color>There is a smelly TREE at the end of the room.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>Nop! Grendar is not going anywhere near that smelly TREE! It should buy itself a Little TreeTM! Grendar loves new car smell! You go chief!<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "tree_1",
+        "name": "TREE",
+        "shortDescription": "<start_grendar_color>There is a burning TREE at the end of the room.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>The TREE smells like burning wood and flesh, filling the atmosphere with a purple smoke.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "candles_0",
+        "name": "CANDLES",
+        "shortDescription": "<start_grendar_color>There is a circle of CANDLES next to the tree.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>The CANDLES burn an unholy blue light. The closest one to the tree is sideways.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_grendar_color>Nop! I'm not picking up those devilish lights!<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "orange_lever_0",
+        "name": "ORANGE LEVER",
+        "shortDescription": "<start_grendar_color>There is a LATCH on the door.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>The LATCH keeps the orange door closed, chief!<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_grendar_color>Yay! Good latch! I dragged the LATCH chief, but you need to from the other side and push the door, it seems a bit stuck, but we can do it together!<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+			"sanctum_orange_door_lodge"
+        ]
+    },
+    {
+        "id": "orange_door_fake_0",
+        "name": "ORANGE DOOR",
+        "shortDescription": "<start_grendar_color>But there is an ORANGE DOOR is on the other end of this... space. <stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>I've never seen the ORANGE DOOR from this side! It look like... a door!<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "tree_2",
+        "name": "TREE",
+        "shortDescription": "<start_grendar_color>I can still feel the TREE from the door.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_grendar_color>A purple smoke is filling the atmosphere, and I can hear the screeches of burning flesh. The TREE's presence is slowly fading away.<stop_color>"
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "plank_0",
+        "name": "PLANK",
+        "shortDescription": "<start_internal_color>A wooden PLANK creaks as I enter.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>This creaking noise brings back memories. The cabin was constructed by my parents when I was very little, and I remember them doing almost everything by themselves. I even remember when they chopped down the first tree. 'This will make an excellent windowsill', my mother had said cheerfully.<stop_color>",
+			"<start_internal_color>But the construction ended up being a nightmare. The weather changed abruptly, and hail started to fall halting all operations for a long time, while destroying everything in its path. My parents were very persistent though, and a few years later, the cabin was finally finished.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "knife_0",
+        "name": "KNIFE",
+        "shortDescription": "<start_internal_color>There is a KNIFE, whose blade is wrapped in vines.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>I remember this KNIFE, I recognize it by the handle. My father bought it from a pawn shop, mainly because he really liked the geometric engraving it had, and then replaced the blade with one that actually cut.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I tear the vines apart, picking up the KNIFE. I feel something strange about it.<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+			"roots_0"
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "knife_1",
+        "name": "KNIFE",
+        "shortDescription": "<start_internal_color>The KNIFE is in my hand.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>I concentrate on the KNIFE for a second. My head.... OUCH!.... Am I having a vision? My mother... with the knife? Stabbing something that looks like a giant spore? The spore! The spore Grendar mentioned, it's in this very room!<stop_color>"
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>With whatever consciousness I have left, I swing the KNIFE blindly at the source of energy.<stop_color>",
+			"<start_sound_color>*WHAM!*<stop_color>",
+			"<start_sound_color>*THUD!*<stop_color>",
+			"<start_grendar_color><Why did you do this, chief? Grendar liked you, even... though... you are... human...>\n<stop_color>",
+			"<start_voice_color><Oh no! GRENDAAAAR!><stop_color>",
+			"<start_internal_color>I stabbed Grendar! How can this be? Why did he get in the way? All my senses are back, but at what cost? His little body is dripping blood over the spore, did he die to protect it?<stop_color>"
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            "sanctum_orange_door_vision",
+			"knife_2"
+        ],
+        "doorIdsToUnlock": [
+			"red_door_freedom",
+			"sanctum_orange_door_vision"
+        ]
+    },
+    {
+        "id": "knife_2",
+        "name": "KNIFE",
+        "shortDescription": "<start_internal_color>The KNIFE is still in my hand.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>The KNIFE is covered in Grendar's blood. The spore has an old stab wound, that matches the blade's thickness.<stop_color>"
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I stab the spore. A thick void starts to flow from the stab wound, as its high pitched screech pierces my ears.<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "orange_door_fake_1",
+        "name": "ORANGE DOOR",
+        "shortDescription": "<start_internal_color>The ORANGE DOOR must be somewhere above me.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>I don't even know where the ORANGE DOOR might be, after this massive fall.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "roots_0",
+        "name": "ROOTS",
+        "shortDescription": "<start_internal_color>There are ROOTS with thorns forming a smaller nest around something.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>I feel a dark energy emanating from this cage of ROOTS, and the more I get close to it, the more my head is about to explode. AAARGH! What is it doing to me? The ROOTS are trying to ground me, but they feel flimsy! I must do something!<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			"<start_internal_color>I tear the ROOTS apart, and a surge of energy blows in my blind eyes.<stop_color>"
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+			"knife_1"
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "spore_0",
+        "name": "SPORE",
+        "shortDescription": "<start_internal_color>There is a SPORE emitting dark energy.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>Must be the SPORE Grendar talked about. I see people in my mind, dying here. I feel their presence.<stop_color>",
+			"<start_voice_color>ARGHH! My head!<stop_color>",
+			"<start_internal_color>What is going on??? I - I - I don't know anymore... terror is the only thing now, as this dark energy is breaking my soul apart. I cannot feel my hands anymore, what is happening to me?! Will it keep me here forever? Did it do the same to Grendar? Can it be stopped?<stop_color>"
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "spore_1",
+        "name": "SPORE",
+        "shortDescription": "<start_internal_color>There is a majestic SPORE in the middle of the room.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_internal_color>The SPORE is surrounded by roots and vines, and has a crown of branches full of flowers on top of it. It is actually beautiful, that's why poor Grendar called it a Sanctuary.<stop_color>",
+			"<start_internal_color>Although it felt like a cold, humid thing when I was blind, seeing now how it glows, with rays as bright as the sun's in the middle of the night, it is a mesmerizing view. And the sounds it makes...<stop_color>",
+			"<start_internal_color>Oh the sounds it makes....it is the sound of a thousand birds, and bees, and winds dancing with a thousand blades of grass. I tend my hand to it, drawn by its immense charm... Another vision... My parents are taking turns trying to stab the SPORE. Roots... roots growing abruptly, keeping them in place.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    },
+    {
+        "id": "spore_2",
+        "name": "",
+        "shortDescription": "<start_internal_color>There is a dark, shriveled SPORE in the middle of the room.<stop_color>",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+			"<start_voice_color>*AAAAARGH!*<stop_color>",
+			"<start_voice_color>*SCREEEEEEEEEAAAAAA!*<stop_color>",
+			"<start_internal_color>The SPORE now has become a grotesque collage of human faces. The roots become flesh, human legs, arms and torsos combined seamlessly while thorns still sprout from their breathing bodies. The faces turn towards me, shouting and crying desperately. Blood gushes through their mouths, and as it drips on what's left of the roots, they start to move towards me.<stop_color>"
+
+        ],
+        "useItemTextBlock" : [
+			""
+
+        ],
+        "useItemText":"",
+        "verbs": [
+            1
+        ],
+        "itemIdsToUnlock": [
+            
+        ],
+        "doorIdsToUnlock": [
+        ]
+    }
+]

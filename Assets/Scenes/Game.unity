@@ -2019,7 +2019,7 @@ MonoBehaviour:
   currentRoomId: 
   startRoomId: yard_0
   endRoomIds:
-  - bedroom_0
+  - yard_2
   currentRoom:
     id: 
     name: 
@@ -2041,9 +2041,9 @@ MonoBehaviour:
   inputField: {fileID: 1603771960}
   placeholderText: {fileID: 984864915}
   gameMusic: {fileID: 1299281322}
-  doorsFile: {fileID: 4900000, guid: 8b42080be32f6164e818e113e965f4d2, type: 3}
-  roomsFile: {fileID: 4900000, guid: b0ab229d68063e24eaeaa605610e917f, type: 3}
-  itemsFile: {fileID: 4900000, guid: b92e2b7362bdefd4d8372b01cbed9d26, type: 3}
+  doorsFile: {fileID: 4900000, guid: e176ad464c9c2e24595450ec50d7dd6f, type: 3}
+  roomsFile: {fileID: 4900000, guid: 9eceaae9a7f59a548817622ec3e60310, type: 3}
+  itemsFile: {fileID: 4900000, guid: d4dabba6145b7cf419d3524de69240e1, type: 3}
   contentRectTransform: {fileID: 1147656276}
   pauseScreen: {fileID: 164039971}
   menuScreen: {fileID: 1986658982}
@@ -3060,7 +3060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985016297504496461, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4985016298336021682, guid: c65c8003d2a980e4cbc5723583a80677, type: 3}
       propertyPath: m_AnchorMax.x

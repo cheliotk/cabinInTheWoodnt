@@ -1,0 +1,320 @@
+[
+    {
+        "id": "yard_0",
+        "name": "yard",
+        "imageSpriteIndex" : 0,
+        "shortDescription": "I'm in the front yard.",
+        "extendedDescription": "I take a stroll around the yard. The old swing hanging from the apple tree, the blueberry bushes, it's all the same. But enough fooling around, it's getting late and cold, I need to get this over with.",
+        "extendedDescriptionBlock" : [
+            ""
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>After all these years, I am standing again in this yard, the smell of snowy mud and elder pines permeating my nose. My childhood cabin, so different and yet so identical, brings back memories. But not necessarily good ones.<stop_color>",
+            "<start_internal_color>I didn't want to come back here, however the two trees arching just before the cabin's porch are making me feel like home. I cannot recall them being there when I was a child, but they might have been mere sprouts back then.<stop_color>",
+            "<start_internal_color>Maybe I should quit stalling the inevitable and go in.<stop_color>"
+        ],
+        "stayText":"It is getting late and cold, I need to get this over with.",
+        "leaveText":"It is getting late and cold, I need to get this over with.",
+        "failText":"I think I'm so tired already that my thoughts are starting to be inconsistent. I should really go inside.",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "yard_to_cabin_0"
+        ],
+        "itemIds": [
+            "trees_yard_0"
+        ]
+    },
+    {
+        "id": "cabin_front_0",
+        "name": "CABIN",
+        "imageSpriteIndex" : 1,
+        "shortDescription": "I'm in front of the CABIN.",
+        "extendedDescription": "An old CABIN, made of pinewood that my parents harvested with great effort. I still remember the smile on my mother's face when the construction ended and she handed me the cabin's key... I wish they were still here...",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>I grab the doorknob with one hand, while the other is looking for the key in my jeans' front pocket. But the door creaks open, just by jiggling the knob. Someone must have broken in, it's been abandoned for more than a decade after all. Or maybe.... maybe there is someone here now?<start_internal_color>"
+        ],
+        "stayItemText":"I need to pull myself together. And I need to go inside.",
+        "failText":"I need to catch that little rascal first!",
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "cabin_to_yard_0",
+            "cabin_to_lodge_0"
+        ],
+        "itemIds": [
+            
+        ]
+    },
+    {
+        "id": "lodge_0",
+        "name": "LODGE",
+        "imageSpriteIndex" : 2,
+        "shortDescription": "We are inside the cabin's LODGE",
+        "extendedDescription": "Grendar likes colors! Everything else here is boring! But there is an orange door, a blue one in the back and a red apothecary table! Very art nouveau if you ask me! The weird thing is... the lumber holding the cabin has started sprouting, chief...",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_grendar_color>I woodn't do that if I were you!<stop_color>",
+            "<start_sound_color>*BANG!*\n*THUD!*<stop_color>",
+            "<start_grendar_color>Hey chief! Wake up! What happened?<stop_color>",
+            "<start_voice_color>Ouch, my head... Who... What… What are you??? What did you do to me you… you…??? Get your hands off me, monster!<stop_color>",
+            "<start_grendar_color>Grendar didn't do anything!<stop_color>",
+            "<start_voice_color>My eyes...I can't see anymore!<stop_color>",
+            "<start_grendar_color>Ah! This house is a little cursed I think. I am not sure though!<stop_color>",
+            "<start_voice_color>This is all your fault! Now you are gonna help me get out of here! You'll be my eyes.<stop_color>",
+            "<start_grendar_color>Grendar likes eyes! With chicken, and maple syrup!<stop_color>",
+            "<start_voice_color>Help me go back outside.<stop_color>",
+            "<start_sound_color>*CLANK CLANK*<stop_color>",
+            "<start_grendar_color>The door won't budge, chief.<stop_color>",
+            "<start_voice_color>Pfff, we'll find another way then.<stop_color>"
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            "lodge_to_cabin_0",
+            "lodge_to_bedroom_0",
+            "lodge_to_sanctum_0"
+        ],
+        "itemIds": [
+            "apothecary_0",
+            "drawer_0",
+            "fireplace_0"
+        ]
+    },
+    {
+        "id": "bedroom_0",
+        "name": "BEDROOM",
+        "imageSpriteIndex" : 3,
+        "shortDescription": "I am inside the cabin's BEDROOM",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [
+
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>I felt a soft air caressing my cheeks..",
+            "<start_grendar_color>YIKES! What are you thinking about chief! This smeels like Grendar's pops! Grandar!<stop_color>",
+            "<start_voice_color>What's wrong with your grandpa Grendar?",
+            "<start_grendar_color>He dead chief! He dead! Can't you smell this smell of smelly corpses and death???<stop_color>",
+            "<start_voice_color>Hm... No...\nFirst my sight is gone, and now my sense of smell apparently...",
+            "<start_grendar_color>You are the lucky one now chief! I wish I couldn't smell now... or see....<stop_color>",
+            "<start_internal_color>My mind though starts to disconnect from Grendar's voice, as I feel drawn to the far end of the room. The creature keeps begging me to come back, but my legs ignore him, as I fumble in the darkness. My hands touch what I assume is a tree.",
+            "<start_internal_color>The tree's trunk is rough and cold. As I pass my hand over it, I can tell it's not merely made of wood. This tree must have grown so abruptly that it ripped apart my parents' wardrobe, putting on what I assume once was my father's favorite sweater. My hand rests there for a while, as this is the first time something in this darned house brings back fond memories.",
+            "<start_internal_color>A hand reaches for mine.\n*Gasps!*",
+            "<start_tree_color>Fear not, child, it will all be over soon.<stop_color>",
+            "<start_voice_color>Gr...Grendar?...",
+            "<start_grendar_color>Grendar is sitting in the corner chief... The tr... the tree is...! Run!<stop_color>",
+            "<start_internal_color>My head starts spinning in horror… The sweater… the big, callous fingers… Is that monstrosity what is left of my father??? I try to shove the tree away, as if it would budge, and make a run for the door. But, what it felt like a million arms suddenly grab me from behind, headlocking me in place.",
+            "<start_tree_color>Please child, burn me.<stop_color>",
+            "<start_internal_color>I struggle.",
+            "<start_tree_color>I tried it myself when I still had legs, but the blue fire won't burn what is living wood.<stop_color>",
+            "<start_internal_color>I feel the arms letting go. I turn and grabble the trunk in the direction of the voice.",
+            "<start_voice_color>I...I...",
+            "<start_internal_color>The trunk has a human face, but it’s not that of my father’s.Though not entirely human anymore, the flesh still feels. It closes its eyes as my fingers go over them, it twitches its neck as I tap it softly with my other hand, while the torso seems to be engulfed by wood. I think I am going to pass out...",
+			"<start_internal_color>This is too much, I try to remove my hand from this abomination as fast as possible, and my hand ends up stuck in the ribcage. It’s still intact, the bare bones are frigid, but what is left of flesh and organs feels humid and warm.",
+            "<start_tree_color>Burn me<stop_color>"
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+			"bedroom_to_lodge",
+			"bedroom_vines"
+            
+        ],
+        "itemIds": [
+			"axe_0",
+			"axe_1",
+			"axe_2",
+			"stick_0",
+			"torch_0",
+			"tree_0",
+			"tree_1",
+			"candles_0"
+			
+            
+        ]
+    },
+
+  {
+        "id": "sanctum_25",
+        "name": "SANCTUARY",
+        "imageSpriteIndex" : 4,
+        "shortDescription": "I... I... Chief... This doesn't look like a room... It's a SANCTUARY",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [ 
+			"<start_grendar_color>Chief... this... the... there is an ORANGE DOOR and a LEVER... But the room... it's broken... there is no floor, only void... the vines are everywhere...<stop_color>",
+			"<start_grendar_color>There is a cradle of roots with a gigantic spore in the middle of the room, engulfed in magic energy... The dead logs that make up the cabin have sprouted, and they are all connected to the spore... This is not a human room anymore, this is a Sanctuary of the Woods.<stop_color>"
+
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>As Grendar crawls through the vines, and reaches the door I feel the room temperature drop.<stop_color>",
+			"<start_internal_color>The pulsating energy that synced with my heartbeat when I entered the cabin, emanates from this very room ahead of me.<stop_color>"
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+			"bedroom_to_lodge_2"
+            
+        ],
+        "itemIds": [
+			"orange_door_fake_0",
+			"orange_lever_0"
+            
+        ]
+    },
+
+{
+        "id": "lodge_15",
+        "name": "LODGE",
+        "imageSpriteIndex" : 5,
+        "shortDescription": "I am inside the cabin's LODGE.",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [ 
+			"<start_internal_color>I am starting to realize that Grendar's company wasn't so bad after all.<stop_internal_color>", 
+			"<start_internal_color>Now that I am alone, I really feel detached and disembodied, as if I am watching - heh... 'watching' - someone else move and talk, as if it were a movie.<stop_internal_color>",
+			"<start_internal_color>It doesn't even feel like a nightmare, it just doesn't ....feel. Was I expecting these things to happen and that's why all I am trying to do is break this darned curse, while completely ignoring the fact that the last thing I saw was a freaking goblin? Or maybe... I deserve it? Are the sins of the fathers visited upon the children?<stop_color>"
+
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>I find myself back in the cabin's lodge. Grendar is shouting, and I can hear him from the orange door.<stop_color>",
+			"<start_internal_color>Now that I am alone for the first time since I came here, I feel their presence once again. Will I ever forgive them for abandoning us like this?<stop_color>"
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+			"lodge_to_bedroom_2",
+			"sanctum_orange_door_lodge"
+		
+            
+        ],
+        "itemIds": [
+			"plank_0"
+            
+        ]
+    },
+
+{
+        "id": "sanctum_2",
+        "name": "SANCTUARY",
+        "imageSpriteIndex" : 6,
+        "shortDescription": "I am in the SANCTUARY, laying on the floor.",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [ 
+			"<start_internal_color>I cannot stand up.<stop_color>", 
+			"<start_internal_color>What is left of this room is covered in roots, vines, and thorns tearing apart my wool sweater to reach for my skin and pierce it with my every move.<stop_color>",
+			"<start_internal_color>Blood is coming down my forehead, freezing my face as streams of cold air come up from the void below me, giving me goosebumps.<stop_color>"
+
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>Come on Grendar! Pull!<stop_color>",
+			"<start_grendar_color>Grendar IS pulling, chief! AAAAARGH! Be careful, the floor is -<stop_color>",
+			"<start_sound_color>*BANG!*<stop_color>",
+			"<start_internal_color>The door slams open. I trip and tumble on what seems to be a nest of roots, vines, and thorns.<stop_color>",
+			"<start_internal_color>I have no idea how many meters I have been falling for. I search blindly with my hands, there is no floor here, no furniture, no nothing.<stop_color>",
+			"<start_internal_color>I try to get up, but I am trapped in this room scale labyrinth made of wood. I call for Grendar - no answer.<stop_color>",
+			"<start_internal_color>Is Grendar not speaking, or did I stop hearing him?<stop_color>",
+			"<start_internal_color>I try to listen to the room - nothing, no noise, no hum, no creaking, not even the beat of my own heart.<stop_color>",
+			"<start_internal_color>And now for the first time since I entered this cursed place, I am truly terrified.<stop_color>"
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+			"sanctum_orange_door_vision"
+            
+        ],
+        "itemIds": [
+			"knife_0",
+			"knife_1",
+			"knife_2",
+			"orange_door_fake_1",
+			"roots_0",
+			"spore_0",
+			"spore_1",
+			"spore_2"
+        ]
+    },
+
+{
+        "id": "lodge_19",
+        "name": "LODGE",
+        "imageSpriteIndex" : 7,
+        "shortDescription": "I am inside the cabin's LODGE.",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [ 
+			"<start_internal_color>What a disaster, what kind of monstrous deity can bring such wrath upon a normal family like us?<stop_color>", 
+			"<start_internal_color>What used to be a home full of joy and laughter, is now riddled with pain and horror. At least, what was a nice home for ME.<stop_color>",
+			"<start_internal_color> What happened to my parents in the end? Where they part of this?...<stop_color>"
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>I climb the roots and vines and reach the door.<stop_color>",
+			"<start_internal_color>I manage to get to the cabin LODGE, and while it's sort of dark, I can finally move around on my own.<stop_color>",
+			"<start_internal_color>Oh, poor Grendar... What have I done...<stop_color>",
+			"<start_internal_color>I wish you were still here... to see the sunrise with me...<stop_color>",
+			"<start_internal_color>The sun is starting to rise over the snowy pines and I finally feel a warm ray of light on my face.<stop_color>"	  
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+			"sanctum_orange_door_lodge",
+			"red_door_freedom"
+            
+        ],
+        "itemIds": [
+            
+        ]
+    },
+
+{
+        "id": "yard_2",
+        "name": "YARD",
+        "imageSpriteIndex" : 8,
+        "shortDescription": "I am in the YARD.",
+        "extendedDescription": "",
+        "extendedDescriptionBlock" : [ 
+        ],
+        "selfDescription": "",
+        "selfDescriptionBlock" : [
+            "<start_internal_color>I am finally in the yard and the sun is still rising.<stop_color>",
+			"<start_internal_color>The two arching trees are still standing there, as if nothing happened.<stop_color>",
+			"<start_internal_color>Did any of this happen?<stop_color>",
+			"<start_internal_color>Have I gone completely insane?<stop_color>",
+			"<start_internal_color>I feel I need to rest for a bit, here, next to the trees...<stop_color>",
+			"<start_internal_color>I don't want to move anymore, it's warm here, in the ground...<stop_color>",
+			"<start_internal_color>The sun has almost risen, and I feel it traveling through the branches and reaching out for me.<stop_color>",
+			"<start_internal_color>A golden ray caresses my leaves.<stop_color>",
+			"<start_internal_color>I like it here...<stop_color>",
+			"<start_internal_color>I will stay here...<stop_color>",
+			"<start_internal_color>For a while...<stop_color>"			  
+			  
+        ],
+        "verbs": [
+            1
+        ],
+        "doorIds": [
+            
+        ],
+        "itemIds": [
+            
+        ]
+    }
+]

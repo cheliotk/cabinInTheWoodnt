@@ -64,13 +64,14 @@ public class GameContentLoader
         Door door = new Door();
         door.id = node["id"];
         door.name = node["name"].Value.ToUpper();
-        door.shortDescription = node["shortDescription"];
-        door.extendedDescription = node["extendedDescription"];
+        door.shortDescription = SetupColors(node["shortDescription"]);
+        door.extendedDescription = SetupColors(node["extendedDescription"]);
 
         door.extendedDescriptionBlock = new List<string>();
         foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
         {
             string value = descriptionEntry.Value as JSONString;
+            value = SetupColors(value);
             door.extendedDescriptionBlock.Add(value);
         }
 
@@ -101,9 +102,9 @@ public class GameContentLoader
         Room room = new Room();
         room.id = node["id"];
         room.name = node["name"].Value.ToUpper();
-        room.shortDescription = node["shortDescription"];
-        room.extendedDescription = node["extendedDescription"];
-        room.selfDescription = node["selfDescription"];
+        room.shortDescription = SetupColors(node["shortDescription"]);
+        room.extendedDescription = SetupColors(node["extendedDescription"]);
+        room.selfDescription = SetupColors(node["selfDescription"]);
 
         room.selfDescription = SetupColors(room.selfDescription);
 
@@ -120,6 +121,7 @@ public class GameContentLoader
         foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
         {
             string value = descriptionEntry.Value as JSONString;
+            value = SetupColors(value);
             room.extendedDescriptionBlock.Add(value);
         }
 
@@ -158,13 +160,14 @@ public class GameContentLoader
         Item item = new Item();
         item.id = node["id"];
         item.name = node["name"].Value.ToUpper();
-        item.shortDescription = node["shortDescription"];
-        item.extendedDescription = node["extendedDescription"];
+        item.shortDescription = SetupColors(node["shortDescription"]);
+        item.extendedDescription = SetupColors(node["extendedDescription"]);
 
         item.extendedDescriptionBlock = new List<string>();
         foreach (var descriptionEntry in node["extendedDescriptionBlock"] as JSONArray)
         {
             string value = descriptionEntry.Value as JSONString;
+            value = SetupColors(value);
             item.extendedDescriptionBlock.Add(value);
         }
 
@@ -172,6 +175,7 @@ public class GameContentLoader
         foreach (var entry in node["useItemTextBlock"] as JSONArray)
         {
             string value = entry.Value as JSONString;
+            value = SetupColors(value);
             item.useItemTextBlock.Add(value);
         }
 
