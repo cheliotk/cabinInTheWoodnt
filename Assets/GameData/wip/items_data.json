@@ -419,7 +419,8 @@
             8
         ],
         "itemIdsToUnlock": [
-			"knife_2"
+			"knife_2",
+            "spore_1"
         ],
         "doorIdsToUnlock": [
 			"red_door_freedom",
@@ -444,7 +445,7 @@
             8
         ],
         "itemIdsToUnlock": [
-            
+            "spore_2"
         ],
         "doorIdsToUnlock": [
         ]
@@ -491,7 +492,8 @@
             8
         ],
         "itemIdsToUnlock": [
-			"knife_1"
+			"knife_1",
+            "spore_0"
             
         ],
         "doorIdsToUnlock": [
@@ -522,11 +524,11 @@
     },
     {
         "id": "spore_1",
-        "name": "SPORE",
-        "shortDescription": "<start_internal_color>There is a majestic SPORE in the middle of the room.<stop_color>",
+        "name": "MAJESTIC SPORE",
+        "shortDescription": "<start_internal_color>There is a MAJESTIC SPORE in the middle of the room.<stop_color>",
         "extendedDescription": "",
         "extendedDescriptionBlock" : [
-			"<start_internal_color>The SPORE is surrounded by roots and vines, and has a crown of branches full of flowers on top of it. It is actually beautiful, that's why poor Grendar called it a Sanctuary.<stop_color>",
+			"<start_internal_color>The MAJESTIC SPORE is surrounded by roots and vines, and has a crown of branches full of flowers on top of it. It is actually beautiful, that's why poor Grendar called it a Sanctuary.<stop_color>",
 			"<start_internal_color>Although it felt like a cold, humid thing when I was blind, seeing now how it glows, with rays as bright as the sun's in the middle of the night, it is a mesmerizing view. And the sounds it makes...<stop_color>",
 			"<start_internal_color>Oh the sounds it makes....it is the sound of a thousand birds, and bees, and winds dancing with a thousand blades of grass. I tend my hand to it, drawn by its immense charm... Another vision... My parents are taking turns trying to stab the SPORE. Roots... roots growing abruptly, keeping them in place.<stop_color>"
 
@@ -547,13 +549,13 @@
     },
     {
         "id": "spore_2",
-        "name": "SPORE",
-        "shortDescription": "<start_internal_color>There is a dark, shriveled SPORE in the middle of the room.<stop_color>",
+        "name": "SPLINTERED SPORE",
+        "shortDescription": "<start_internal_color>There is a dark, shriveled SPLINTERED SPORE in the middle of the room.<stop_color>",
         "extendedDescription": "",
         "extendedDescriptionBlock" : [
 			"<start_voice_color>*AAAAARGH!*<stop_color>",
 			"<start_voice_color>*SCREEEEEEEEEAAAAAA!*<stop_color>",
-			"<start_internal_color>The SPORE now has become a grotesque collage of human faces. The roots become flesh, human legs, arms and torsos combined seamlessly while thorns still sprout from their breathing bodies. The faces turn towards me, shouting and crying desperately. Blood gushes through their mouths, and as it drips on what's left of the roots, they start to move towards me.<stop_color>"
+			"<start_internal_color>The SPLINTERED SPORE now has become a grotesque collage of human faces. The roots become flesh, human legs, arms and torsos combined seamlessly while thorns still sprout from their breathing bodies. The faces turn towards me, shouting and crying desperately. Blood gushes through their mouths, and as it drips on what's left of the roots, they start to move towards me.<stop_color>"
 
         ],
         "useItemTextBlock" : [
